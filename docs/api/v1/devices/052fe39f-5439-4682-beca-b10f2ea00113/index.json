@@ -1,0 +1,13 @@
+{
+  "charge_percentage": 78.22,
+  "charge_rate": "idle",
+  "id": "052fe39f-5439-4682-beca-b10f2ea00113",
+  "location": "Living Room",
+  "name": "Home Battery",
+  "provisioned": true,
+  "reserve_limit": 40,
+  "status": "active",
+  "type": "home_battery",
+  "dr_status": "curtailed",
+  "service": "unlimited"
+}

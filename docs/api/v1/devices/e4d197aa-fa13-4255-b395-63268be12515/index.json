@@ -1,0 +1,15 @@
+{
+  "interior_temperature": 23,
+  "exterior_temperature": 8.25,
+  "exterior_weather": "clear",
+  "id": "e4d197aa-fa13-4255-b395-63268be12515",
+  "setpoint": 25,
+  "setpoint_span": 2,
+  "location": "Living Room",
+  "mode": "auto",
+  "name": "Living Room",
+  "provisioned": true,
+  "status": "active",
+  "dr_status": "curtailed",
+  "type": "thermostat"
+}

@@ -1,0 +1,20 @@
+{
+  "home": {
+    "id": "a5e197aa-fa13-4255-b395-63268be12842",
+    "lpc_config": {
+      "name": "littleBig LPC",
+      "status_communication": true,
+      "technical_contact": "phone",
+      "technical_phone": "+1-423-555-1212",
+      "technical_email": null,
+      "default_event_message": {
+        "title": "Demand Response in Progress",
+        "message": "Your home is participating in a demand response event, thank you for your participation."
+      },
+      "current_event_message": {
+        "title": "Big Demand Response in Progress",
+        "message": "This event is really wild, who knows when it will end, better put the kettle on."
+      }
+    }
+  }
+}

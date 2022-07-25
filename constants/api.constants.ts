@@ -1,0 +1,4 @@
+export const USER_API_PREFIX_KEY = "userApiPrefix";
+export const JWT_TOKEN_KEY = "jwtToken";
+export const DEFAULT_COJOURN_JWT_TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.W9wGb8Cs1SoCoiJ6WRzK6NMg7xed7PBNYJpBNIoD_G8";

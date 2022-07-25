@@ -1,0 +1,12 @@
+{
+  "charge_percentage": 66.1,
+  "charge_rate": "medium",
+  "id": "f8204550-32cc-44aa-bf48-a95a90c1504f",
+  "location": "Living Room",
+  "name": "Linda's Charger",
+  "provisioned": true,
+  "status": "active",
+  "dr_status": "curtailed",
+  "type": "ev_charger",
+  "service": "unlimited"
+}

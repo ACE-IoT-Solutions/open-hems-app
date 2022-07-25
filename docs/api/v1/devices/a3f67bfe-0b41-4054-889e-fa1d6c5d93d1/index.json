@@ -1,0 +1,11 @@
+{
+  "id": "a3f67bfe-0b41-4054-889e-fa1d6c5d93d1",
+  "label": "active",
+  "location": "Living Room",
+  "name": "Water Heater",
+  "provisioned": true,
+  "status": "active",
+  "service": "unlimited",
+  "dr_status": "opted_out",
+  "type": "water_heater"
+}

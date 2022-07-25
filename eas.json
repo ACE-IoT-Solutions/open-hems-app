@@ -1,0 +1,21 @@
+{
+  "cli": {
+    "version": ">= 0.38.3"
+  },
+  "build": {
+    "acceptance": {
+      "distribution": "internal"
+    },
+
+    "production": {}
+  },
+  "submit": {
+    "acceptance": {},
+
+    "production": {
+      "android": {
+        "track": "internal"
+      }
+    }
+  }
+}
