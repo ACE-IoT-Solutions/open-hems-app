@@ -9,6 +9,7 @@ import { CarChargerScreen } from "../screens/CarChargerScreen";
 import { SolarPanelScreen } from "../screens/SolarPanelScreen";
 import { WaterHeaterScreen } from "../screens/WaterHeaterScreen";
 import { HomeBatteryScreen } from "../screens/HomeBatteryScreen";
+import { WelcomeScreen } from "../screens/WelcomeScreen";
 
 import { createBottomTabNavigator, BottomTabBarProps, BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { DataBoundary } from "../components/DataBoundary";
@@ -23,6 +24,7 @@ function DeviceScreenTab(device: DeviceData) {
   const deviceType = device.type as DeviceType;
 
   const deviceNavigationName: Record<DeviceType, DeviceScreenName> = {
+    welcome: "Welcome",
     thermostat: "Thermostat",
     ev_charger: "CarCharger",
     pv_system: "SolarPanel",
@@ -31,6 +33,7 @@ function DeviceScreenTab(device: DeviceData) {
   };
 
   const deviceScreenName = {
+    Welcome: WelcomeScreen,
     Thermostat: ThermostatScreen,
     CarCharger: CarChargerScreen,
     SolarPanel: SolarPanelScreen,

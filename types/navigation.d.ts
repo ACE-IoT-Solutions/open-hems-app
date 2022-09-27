@@ -1,9 +1,10 @@
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 export type DeviceParams = { deviceName: string; deviceId: DeviceId };
-export type DeviceScreenName = "Thermostat" | "SolarPanel" | "CarCharger" | "WaterHeater" | "HomeBattery";
+export type DeviceScreenName = "Welcome" | "Thermostat" | "SolarPanel" | "CarCharger" | "WaterHeater" | "HomeBattery";
 
 export type DeviceParamList = {
+  Welcome: DeviceParams;
   Thermostat: DeviceParams;
   SolarPanel: DeviceParams;
   CarCharger: DeviceParams;
@@ -13,12 +14,14 @@ export type DeviceParamList = {
 
 export type DeviceNavigationProps = BottomTabNavigationProp<DeviceParamList>;
 
+export type WelcomeScreenRouteProps = RouteProp<DeviceParamList, "Welcome">;
 export type ThermostatScreenRouteProps = RouteProp<DeviceParamList, "Thermostat">;
 export type SolarPanelScreenRouteProps = RouteProp<DeviceParamList, "SolarPanel">;
 export type CarChargerScreenRouteProps = RouteProp<DeviceParamList, "CarCharger">;
 export type WaterHeaterScreenRouteProps = RouteProp<DeviceParamList, "WaterHeater">;
 export type HomeBatteryScreenRouteProps = RouteProp<DeviceParamList, "HomeBattery">;
 export type DeviceScreenRouteProps =
+  | WelcomeScreenRouteProps
   | ThermostatScreenRouteProps
   | SolarPanelScreenRouteProps
   | CarChargerScreenRouteProps
@@ -54,6 +57,8 @@ type AppScreenParamsList = {
   Debug: undefined;
   StyleGuide: undefined;
   ErrorScreen: undefined;
+
+  DebugWelcome: WelcomeScreenRouteProps;
   DebugThermostat: ThermostatScreenRouteProps;
   DebugCarCharger: CarChargerScreenRouteProps;
   DebugSolarPanel: SolarPanelScreenRouteProps;

@@ -70,7 +70,7 @@ export type CarChargerData = BaseDeviceData & {
   service: DeviceService;
 };
 
-type DeviceData = CarChargerData | ThermostatData | WaterHeaterData | SolarPanelData | HomeBatteryData;
+type DeviceData = WelcomeData | CarChargerData | ThermostatData | WaterHeaterData | SolarPanelData | HomeBatteryData;
 
 export type DeviceList = Array<DeviceData>;
 export type DeviceListResponse = {
