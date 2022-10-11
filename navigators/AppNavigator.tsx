@@ -15,7 +15,6 @@ import { HomeBatteryScreen } from "../screens/HomeBatteryScreen";
 import { SolarPanelScreen } from "../screens/SolarPanelScreen";
 import { WaterHeaterScreen } from "../screens/WaterHeaterScreen";
 import { AuthTokenScreen } from "../screens/AuthTokenScreen";
-import { WelcomeScreen } from "../screens/WelcomeScreen";
 
 const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
 
@@ -60,7 +59,7 @@ export function AppNavigator() {
       <Screen name="DebugSolarPanel" component={SolarPanelScreen} options={deviceScreenOptions} />
       <Screen name="DebugWaterHeater" component={WaterHeaterScreen} options={deviceScreenOptions} />
       <Screen name="DebugHomeBattery" component={HomeBatteryScreen} options={deviceScreenOptions} />
-      <Screen name="DebugWelcome" component={WelcomeScreen} options={deviceScreenOptions} />
+      {/* <Screen name="DebugWelcome" component={WelcomeScreen} options={deviceScreenOptions} /> */}
     </Navigator>
   );
 }

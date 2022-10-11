@@ -1,6 +1,7 @@
 import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 export type DeviceParams = { deviceName: string; deviceId: DeviceId };
+// export type DeviceScreenName = "Thermostat" | "SolarPanel" | "CarCharger" | "WaterHeater" | "HomeBattery";
 export type DeviceScreenName = "Welcome" | "Thermostat" | "SolarPanel" | "CarCharger" | "WaterHeater" | "HomeBattery";
 
 export type DeviceParamList = {
@@ -13,6 +14,7 @@ export type DeviceParamList = {
 };
 
 export type DeviceNavigationProps = BottomTabNavigationProp<DeviceParamList>;
+export type MainNavigationProps = NativeStackNavigationProp<DeviceParamList>;
 
 export type WelcomeScreenRouteProps = RouteProp<DeviceParamList, "Welcome">;
 export type ThermostatScreenRouteProps = RouteProp<DeviceParamList, "Thermostat">;
@@ -47,6 +49,7 @@ type DemandResponseParams = {
 export type DemandResponseScreenRouteProps = RouteProp<DemandResponseParams>;
 
 type AppScreenParamsList = {
+  AppNavigator: undefined;
   DeviceList: undefined;
   SettingsScreen: undefined;
   AuthTokenScreen: undefined;

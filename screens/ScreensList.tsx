@@ -64,8 +64,8 @@ export const ScreensList = () => {
     },
     {
       name: "DebugWelcome",
-      title: "Debug Welcome"
-    }
+      title: "Debug Welcome",
+    },
   ];
 
   const screenList = [deviceScreenList, debugScreenList].flat();

@@ -8,6 +8,20 @@ import { useFonts, Rubik_300Light, Rubik_400Regular, Rubik_500Medium } from "@ex
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { theme } from "./theme";
+import { WelcomeScreen } from "./screens/WelcomeScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AppScreenParamsList } from "./types";
+
+const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
+
+function MainNavigator() {
+  return (
+    <Navigator initialRouteName="DebugWelcome">
+      <Screen name="DebugWelcome" component={WelcomeScreen} />
+      <Screen name="AppNavigator" component={AppNavigator} options={{ headerShown: false }} />
+    </Navigator>
+  );
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +45,8 @@ export default function App() {
       <ErrorBoundary>
         <SafeAreaProvider>
           <NavigationContainer>
-            <AppNavigator />
+            <MainNavigator />
+            {/* <AppNavigator /> */}
           </NavigationContainer>
         </SafeAreaProvider>
       </ErrorBoundary>
