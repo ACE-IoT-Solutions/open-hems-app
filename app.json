@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Open HEMS",
-    "slug": "hems-mobile-app",
-    "version": "0.0.25",
+    "name": "Connecting MHA",
+    "slug": "connecting-mha-app",
+    "version": "0.0.1",
     "orientation": "portrait",
     "owner": "ace-iot",
     "icon": "./assets/icon.png",
@@ -18,18 +18,23 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ace-iot.open-hems"
+      "bundleIdentifier": "com.aceiotsolutions.connecting-mha-app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.adaptive.foreground.png",
         "backgroundImage": "./assets/icon.adaptive.background.png"
       },
-      "versionCode": "36",
-      "package": "com.ace_iot_solutions.open_hems_app"
+      "versionCode": 1,
+      "package": "com.aceiotsolutions.connecting_mha_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b4debb26-532a-47f3-8a70-aaac03231111"
+      }
     }
   }
 }

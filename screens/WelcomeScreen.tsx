@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import Phone from "../assets/svg/phone.svg";
 import Welcome from "../assets/svg/welcome.svg";

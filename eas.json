@@ -1,17 +1,16 @@
 {
   "cli": {
-    "version": ">= 0.38.3"
+    "version": ">= 0.38.3",
+    "promptToConfigurePushNotifications": false
   },
   "build": {
     "acceptance": {
       "distribution": "internal"
     },
-
     "production": {}
   },
   "submit": {
     "acceptance": {},
-
     "production": {
       "android": {
         "track": "internal"
