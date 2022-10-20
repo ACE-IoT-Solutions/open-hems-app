@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import Phone from "../assets/svg/phone.svg";
 import Welcome from "../assets/svg/welcome.svg";
 import Mail from "../assets/svg/mail.svg";
-import ArrowUp from "../assets/svg/arrow-up.svg";
+import ArrowUp from "../assets/svg/chevron-up-solid_2.svg";
 import { DismissableSwipeResponder } from "../components/DismissableSwipeResponder";
 
 export function WelcomeScreen() {
