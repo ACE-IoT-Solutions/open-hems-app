@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { Route, useNavigation, useNavigationState } from "@react-navigation/native";
 import { NavigationActions } from "react-navigation";
 import {
@@ -13,8 +13,9 @@ import Animated, { withTiming, useAnimatedStyle, useSharedValue } from "react-na
 import { MainNavigationProps } from "../types";
 import { theme } from "../theme";
 
+const HEIGHT = Dimensions.get("window").height;
+
 export function DismissableSwipeResponder({ children }: { children: React.ReactNode }) {
-  const currentRoutes: Array<Route<MainNavigationProps>> = useNavigationState((state) => state.routes);
   const navigation = useNavigation<MainNavigationProps>();
   const initialPosition = useSharedValue(0);
   const position = useSharedValue(0);
@@ -37,28 +38,16 @@ export function DismissableSwipeResponder({ children }: { children: React.ReactN
     }
 
     if (state === State.END) {
-      if (Math.abs(translationY) > 70) {
-        const didNavigate = navigateToHome();
-        if (didNavigate) {
-          position.value = 0;
-        } else {
-          position.value = withTiming(0, { duration: 100 });
-        }
+      if (translationY < -200) {
+        navigateToHome();
+        position.value = HEIGHT;
       } else {
         position.value = withTiming(0, { duration: 100 });
       }
     }
   };
 
-  console.log(
-    "NavigationState: ",
-    useNavigationState((state) => state)
-  );
   function navigateToHome() {
-    console.log("currentRoute:");
-    currentRoutes.forEach(function (route) {
-      console.log(route);
-    });
     navigation.navigate(
       "AppNavigator",
       {},

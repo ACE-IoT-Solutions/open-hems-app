@@ -4,6 +4,7 @@ import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY, DEFAULT_COJOURN_JWT_TOKEN } from ".
 export type ApiPrefixName = "digitalOcean" | "githubPages" | "localhost" | "customUrl";
 export const githubPagesEndpoint = "https://carbonfive.github.io/open-hems-app";
 export const digitalOceanEndpoint = "https://open-hems.uc.r.appspot.com";
+// export const digitalOceanEndpoint = "http://127.0.0.1:5000";
 
 export const apiNamespace = "/api/v1";
 

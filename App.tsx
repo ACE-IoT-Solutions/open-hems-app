@@ -18,7 +18,7 @@ function MainNavigator() {
   return (
     <Navigator initialRouteName="DebugWelcome">
       <Screen name="DebugWelcome" component={WelcomeScreen} />
-      <Screen name="AppNavigator" component={AppNavigator} options={{ headerShown: false }} />
+      <Screen name="AppNavigator" component={AppNavigator} options={{ animation: "none", headerShown: false }} />
     </Navigator>
   );
 }
@@ -46,7 +46,6 @@ export default function App() {
         <SafeAreaProvider>
           <NavigationContainer>
             <MainNavigator />
-            {/* <AppNavigator /> */}
           </NavigationContainer>
         </SafeAreaProvider>
       </ErrorBoundary>
