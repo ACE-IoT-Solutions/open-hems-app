@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions, View } from "react-native";
-import { Route, useNavigation, useNavigationState } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { NavigationActions } from "react-navigation";
 import {
   PanGestureHandler,
@@ -39,7 +39,7 @@ export function DismissableSwipeResponder({ children }: { children: React.ReactN
 
     if (state === State.END) {
       if (translationY < -200) {
-        navigateToHome();
+        navigateToMacAddressScreen();
         position.value = HEIGHT;
       } else {
         position.value = withTiming(0, { duration: 100 });
@@ -47,15 +47,23 @@ export function DismissableSwipeResponder({ children }: { children: React.ReactN
     }
   };
 
-  function navigateToHome() {
+  // function navigateToHome() {
+  //   navigation.navigate(
+  //     "AppNavigator",
+  //     {},
+  //     NavigationActions.navigate({
+  //       routeName: "AppNavigator",
+  //     })
+  //   );
+  // }
+  function navigateToMacAddressScreen() {
     navigation.navigate(
-      "AppNavigator",
+      "DebugMacAddress",
       {},
       NavigationActions.navigate({
-        routeName: "AppNavigator",
+        routeName: "DebugMacAddress",
       })
     );
-    return true;
   }
 
   return (

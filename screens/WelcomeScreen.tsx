@@ -5,6 +5,7 @@ import Welcome from "../assets/svg/welcome.svg";
 import Mail from "../assets/svg/mail.svg";
 import ArrowUp from "../assets/svg/chevron-up-solid_2.svg";
 import { DismissableSwipeResponder } from "../components/DismissableSwipeResponder";
+import { theme } from "../theme";
 
 export function WelcomeScreen() {
   return (
@@ -75,24 +76,24 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 15,
-    color: "white",
+    color: theme.colors.white,
     paddingTop: 20,
     lineHeight: 20,
   },
   divider: {
     paddingTop: 20,
-    borderBottomColor: "white",
+    borderBottomColor: theme.colors.white,
     borderBottomWidth: 1,
   },
   text: {
     fontSize: 15,
-    color: "white",
+    color: theme.colors.white,
   },
   subText: {
     fontSize: 15,
     paddingLeft: 10,
     paddingTop: 5,
-    color: "white",
+    color: theme.colors.white,
   },
   contactContainer: {
     flex: 1,
@@ -105,14 +106,14 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "white",
+    borderColor: theme.colors.white,
     backgroundColor: "rgba(255,255,255,0.15)",
   },
   contactTitleContainer: {
     flex: 1,
     fontSize: 15,
     fontWeight: "bold",
-    color: "white",
+    color: theme.colors.white,
     marginBottom: 5,
   },
   contactRowContainer: {

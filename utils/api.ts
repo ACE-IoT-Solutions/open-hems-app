@@ -1,10 +1,16 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY, DEFAULT_COJOURN_JWT_TOKEN } from "../constants/api.constants";
+import {
+  USER_API_PREFIX_KEY,
+  JWT_TOKEN_KEY,
+  DEFAULT_COJOURN_JWT_TOKEN,
+  FIRST_SECRET,
+} from "../constants/api.constants";
+import sign from "jwt-encode";
 
 export type ApiPrefixName = "digitalOcean" | "githubPages" | "localhost" | "customUrl";
 export const githubPagesEndpoint = "https://carbonfive.github.io/open-hems-app";
-export const digitalOceanEndpoint = "https://open-hems.uc.r.appspot.com";
-// export const digitalOceanEndpoint = "http://127.0.0.1:5000";
+// export const digitalOceanEndpoint = "https://open-hems.uc.r.appspot.com";
+export const digitalOceanEndpoint = "http://127.0.0.1:5000";
 
 export const apiNamespace = "/api/v1";
 
@@ -32,10 +38,39 @@ export async function getApiEndpoint(): Promise<string | null> {
 }
 
 export async function getJwt() {
-  const asyncJwt = await AsyncStorage.getItem(JWT_TOKEN_KEY);
-  return asyncJwt ?? DEFAULT_COJOURN_JWT_TOKEN;
+  const asyncJwt = (await AsyncStorage.getItem(JWT_TOKEN_KEY)) ?? "INVALID TOKEN";
+  return asyncJwt;
 }
 
 export async function setJwt(jwt: string) {
   await AsyncStorage.setItem(JWT_TOKEN_KEY, jwt);
+}
+
+export async function sendSecret(macAddress: string) {
+  const data = { authorized: true };
+  const secret = sign(data, FIRST_SECRET + macAddress);
+  try {
+    const url = await getApiEndpoint();
+    const endpoint = "/hems/generate_new_jwt";
+
+    const response = await fetch(url + endpoint, {
+      method: "POST",
+      body: JSON.stringify({
+        jwt: secret,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    if (response.status !== 200) {
+      setJwt("INVALID TOKEN");
+    } else {
+      const data = await response.json();
+      setJwt(data["jwt"]);
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
 }

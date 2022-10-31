@@ -11,13 +11,15 @@ import { theme } from "./theme";
 import { WelcomeScreen } from "./screens/WelcomeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AppScreenParamsList } from "./types";
+import { MacAddressScreen } from "./screens/MacAddressScreen";
 
 const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
 
 function MainNavigator() {
   return (
     <Navigator initialRouteName="DebugWelcome">
-      <Screen name="DebugWelcome" component={WelcomeScreen} />
+      <Screen name="DebugWelcome" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Screen name="DebugMacAddress" component={MacAddressScreen} options={{ animation: "none", headerShown: false }} />
       <Screen name="AppNavigator" component={AppNavigator} options={{ animation: "none", headerShown: false }} />
     </Navigator>
   );
