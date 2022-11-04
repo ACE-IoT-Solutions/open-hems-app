@@ -16,6 +16,7 @@ import { DataBoundary } from "../components/DataBoundary";
 import { DeviceHeader } from "../components/DeviceHeader";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationSwipeResponder } from "../components/NavigationSwipeResponder";
+import { MacAddressScreen } from "../screens/MacAddressScreen";
 
 const DeviceTabNavigator = createBottomTabNavigator();
 type DeviceNavigationProps = BottomTabBarProps;
@@ -34,6 +35,7 @@ function DeviceScreenTab(device: DeviceData) {
 
   const deviceScreenName = {
     Welcome: WelcomeScreen,
+    MacAddress: MacAddressScreen,
     Thermostat: ThermostatScreen,
     CarCharger: CarChargerScreen,
     SolarPanel: SolarPanelScreen,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getApiEndpoint } from "../utils/api";
+import { getApiEndpoint, getJwt } from "../utils/api";
 import { DEFAULT_COJOURN_JWT_TOKEN } from "../constants/api.constants";
 import { HomeConfigData } from "../types";
 
@@ -16,7 +16,8 @@ export function useHomeConfigData() {
       const endpoint = await getApiEndpoint();
       const response = await fetch(`${endpoint}/home/config`, {
         headers: {
-          Authorization: `Bearer ${DEFAULT_COJOURN_JWT_TOKEN}`,
+          // Authorization: `Bearer ${DEFAULT_COJOURN_JWT_TOKEN}`,
+          Authorization: `Bearer ${getJwt()}`,
         },
       });
       setLoading(false);
