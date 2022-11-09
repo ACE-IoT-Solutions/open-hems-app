@@ -1,7 +1,7 @@
 #!/bin/ruby
 #
 # Set build number strings for:
-#   ios/OpenHEMS/Info.plist
+#   ios/ConnectingMHA/Info.plist
 #   android/app/build.gradle
 #   app.json
 #   package.json
@@ -30,7 +30,7 @@ puts "🧙 Updating versions: versionName=#{version_name} androidVersionCode=#{a
 # Rewrite Apple ids
 #   version name (0.0.9)
 #   build number (16)
-ios_plist_path = 'ios/OpenHEMS/Info.plist'
+ios_plist_path = 'ios/ConnectingMHA/Info.plist'
 ios_plist = File
   .read(ios_plist_path)
   .sub(/<key>CFBundleShortVersionString<\/key>\n    <string>([0-9.]+)<\/string>/, "<key>CFBundleShortVersionString</key>\n    <string>#{version_name}</string>")

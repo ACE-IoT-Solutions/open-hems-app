@@ -12,7 +12,7 @@ import {
   SettingsScreenCell,
   SettingsScreenCellInputAccessoryView,
 } from "../components/SettingsScreen/SettingsScreenCell";
-import { ApiPrefixName, digitalOceanEndpoint, githubPagesEndpoint } from "../utils/api";
+import { ApiPrefixName, defaultEndpoint, githubPagesEndpoint } from "../utils/api";
 import { USER_API_PREFIX_KEY } from "../constants/api.constants";
 
 type SettingsScreenMenuItem = {
@@ -30,7 +30,7 @@ export const SettingsScreen = () => {
   const menuItems: SettingsScreenMenuItem[] = [
     {
       id: "digitalOcean",
-      apiPrefix: digitalOceanEndpoint,
+      apiPrefix: defaultEndpoint,
       icon: "🌊",
       title: "Digital Ocean",
       accessoryView: null,

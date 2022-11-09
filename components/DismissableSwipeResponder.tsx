@@ -39,32 +39,13 @@ export function DismissableSwipeResponder({ children }: { children: React.ReactN
 
     if (state === State.END) {
       if (translationY < -200) {
-        navigateToMacAddressScreen();
+        navigation.navigate("DebugMacAddress");
         position.value = HEIGHT;
       } else {
         position.value = withTiming(0, { duration: 100 });
       }
     }
   };
-
-  // function navigateToHome() {
-  //   navigation.navigate(
-  //     "AppNavigator",
-  //     {},
-  //     NavigationActions.navigate({
-  //       routeName: "AppNavigator",
-  //     })
-  //   );
-  // }
-  function navigateToMacAddressScreen() {
-    navigation.navigate(
-      "DebugMacAddress",
-      {},
-      NavigationActions.navigate({
-        routeName: "DebugMacAddress",
-      })
-    );
-  }
 
   return (
     <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>

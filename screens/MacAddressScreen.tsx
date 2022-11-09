@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, Modal } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, Modal, TouchableOpacity } from "react-native";
 import { theme } from "../theme";
 import { Button } from "../components/Button";
-import { setJwt, getApiEndpoint } from "../utils/api";
+import { setJwt, getApiEndpoint, setStorageMacAddress } from "../utils/api";
 import { useNavigation } from "@react-navigation/native";
 import { MainNavigationProps } from "../types/navigation";
 import { NavigationActions } from "react-navigation";
 import { FIRST_SECRET } from "../constants/api.constants";
 import sign from "jwt-encode";
 import { TextInputMask } from "react-native-masked-text";
+import User from "../assets/svg/user.svg";
 
 export function MacAddressScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isVerified, setIsVerified] = useState<boolean>(false);
   const [macAddress, setMacAddress] = useState<string>("001122334455");
   const navigation = useNavigation<MainNavigationProps>();
 
@@ -26,10 +26,21 @@ export function MacAddressScreen() {
     );
   }
 
+  function navigateToOptions() {
+    navigation.navigate(
+      "Options",
+      {},
+      NavigationActions.navigate({
+        routeName: "Options",
+      })
+    );
+  }
+
   async function verify() {
-    console.log(macAddress);
+    // console.log("macAddress", macAddress);
     const data = { authorized: true };
     const secret = sign(data, FIRST_SECRET + macAddress);
+    await setStorageMacAddress(macAddress);
     try {
       const url = await getApiEndpoint();
       const endpoint = "/hems/generate_new_jwt";
@@ -47,23 +58,17 @@ export function MacAddressScreen() {
 
       if (response.status !== 200) {
         setJwt("INVALID_TOKEN");
-        setIsVerified(false);
         setIsModalVisible(true);
-        console.log("Verify Failure");
+        // console.log("Verify Failure");
       } else {
         const data = await response.json();
         setJwt(data["jwt"]);
-        setIsVerified(true);
-        console.log("Verify Success");
+        // console.log("Verify Success");
+        navigateToHome();
       }
     } catch (error) {
       console.log("Error: ", error);
     }
-  }
-
-  async function signOut() {
-    setIsVerified(false);
-    setJwt("INVALID_TOKEN");
   }
 
   function toggleModal() {
@@ -85,25 +90,25 @@ export function MacAddressScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.titleText}>Enter your mac address</Text>
-      <View style={styles.inputTextContainer}>
+      <TouchableOpacity onPress={navigateToOptions} style={styles.settingButton}>
+        <User />
+      </TouchableOpacity>
+      <View style={styles.textContainer}>
+        <View style={styles.labelTextContainer}>
+          <Text style={styles.labelText}>Find your 12-character mac address from your gateway and enter it below</Text>
+        </View>
         <TextInputMask
+          style={styles.inputText}
           value={macAddress}
           type={"custom"}
           placeholder="__:__:__:__:__:__"
           options={{ mask: "SS:SS:SS:SS:SS:SS" }}
-          onChangeText={(text) => setMacAddress(text.replaceAll(":", "").toLowerCase())}
-          style={styles.inputText}
+          onChangeText={(newMacAddress) => setMacAddress(newMacAddress.replace(/[^a-zA-Z\d]+/g, "").toLowerCase())}
           maxLength={17}
         />
       </View>
-      {isVerified ? (
-        <Button label="Enter" style={styles.enterButton} onPress={navigateToHome} />
-      ) : (
-        <Button label="Verify" style={styles.verifyButton} onPress={verify} />
-      )}
+      <Button label="Verify" style={styles.verifyButton} onPress={verify} />
       <ErrorModal />
-      <Button label="Sign Out" style={styles.verifyButton} onPress={signOut} />
     </SafeAreaView>
   );
 }
@@ -121,22 +126,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: theme.backdrop,
   },
-  titleText: {
-    fontSize: 18,
-    padding: 20,
+  settingButton: {
+    paddingBottom: 10,
   },
-  inputTextContainer: {
+  textContainer: {
     flex: 1,
-    flexDirection: "row",
-    maxHeight: 50,
+    flexDirection: "column",
+    maxHeight: 150,
     maxWidth: 210,
     marginBottom: 10,
   },
+  labelTextContainer: {
+    flex: 1,
+    height: 150,
+    width: 210,
+    marginBottom: 20,
+  },
+  labelText: {
+    fontSize: 17,
+    lineHeight: 23,
+  },
   inputText: {
     flex: 1,
+    fontSize: 20,
     borderRadius: 10,
-    marginBottom: 0,
-    fontSize: 18,
     textAlign: "center",
     backgroundColor: theme.colors.white,
   },
@@ -145,13 +158,6 @@ const styles = StyleSheet.create({
     width: 210,
     marginVertical: 10,
     borderRadius: 30,
-  },
-  enterButton: {
-    height: 50,
-    width: 210,
-    marginVertical: 10,
-    borderRadius: 30,
-    backgroundColor: "rgb(54, 234, 98)",
   },
   errorModal: {
     flex: 1,

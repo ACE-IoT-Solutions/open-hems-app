@@ -1,4 +1,4 @@
-package com.ace_iot_solutions.open_hems_app;
+package com.aceiotsolutions.connecting_mha_app;
 
 import android.os.Bundle;
 

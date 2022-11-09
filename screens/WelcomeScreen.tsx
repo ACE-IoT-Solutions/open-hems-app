@@ -1,13 +1,29 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import Phone from "../assets/svg/phone.svg";
 import Welcome from "../assets/svg/welcome.svg";
 import Mail from "../assets/svg/mail.svg";
 import ArrowUp from "../assets/svg/chevron-up-solid_2.svg";
+import User from "../assets/svg/user.svg";
 import { DismissableSwipeResponder } from "../components/DismissableSwipeResponder";
 import { theme } from "../theme";
+import { NavigationActions } from "react-navigation";
+import { useNavigation } from "@react-navigation/native";
+import { MainNavigationProps } from "../types/navigation";
 
 export function WelcomeScreen() {
+  const navigation = useNavigation<MainNavigationProps>();
+
+  function navigateToOptions() {
+    navigation.navigate(
+      "Options",
+      {},
+      NavigationActions.navigate({
+        routeName: "Options",
+      })
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <DismissableSwipeResponder>
@@ -32,23 +48,26 @@ export function WelcomeScreen() {
           </View>
 
           <View style={styles.contactContainer}>
-            <Text style={styles.contactTitleContainer}>The Connecting MHA Team</Text>
+            <Text style={styles.contactLabelContainer}>The Connecting MHA Team</Text>
             <View style={styles.contactRowContainer}>
               <Phone width={30} height={30} fill="red" />
-              <Text style={styles.subText}>(629) 256-5894</Text>
+              <Text style={styles.contactInfoText}>(629) 256-5894</Text>
             </View>
             <View style={styles.contactRowContainer}>
               <Mail width={30} height={30} fill="red" />
-              <Text style={styles.subText}>info@connecting-mha.com</Text>
+              <Text style={styles.contactInfoText}>info@connecting-mha.com</Text>
             </View>
           </View>
 
-          <View style={styles.scrollContainer}>
+          <View style={styles.swipeContainer}>
             <ArrowUp width={30} height={30} />
-            <Text style={[styles.text, { paddingTop: 5 }]}>Swipe up to continue</Text>
+            <Text style={[styles.swipeText, { paddingTop: 5 }]}>Swipe up to continue</Text>
           </View>
         </View>
       </DismissableSwipeResponder>
+      <TouchableOpacity onPress={navigateToOptions} style={styles.settingButton}>
+        <User />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -85,45 +104,44 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.colors.white,
     borderBottomWidth: 1,
   },
-  text: {
-    fontSize: 15,
-    color: theme.colors.white,
-  },
-  subText: {
-    fontSize: 15,
-    paddingLeft: 10,
-    paddingTop: 5,
-    color: theme.colors.white,
-  },
   contactContainer: {
-    flex: 1,
     flexDirection: "column",
-    maxHeight: 170,
+    height: 180,
     marginTop: 20,
-    paddingTop: 20,
-    paddingRight: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
+    padding: 25,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: theme.colors.white,
     backgroundColor: "rgba(255,255,255,0.15)",
   },
-  contactTitleContainer: {
-    flex: 1,
+  contactLabelContainer: {
     fontSize: 15,
     fontWeight: "bold",
     color: theme.colors.white,
-    marginBottom: 5,
+    marginBottom: 20,
   },
   contactRowContainer: {
-    flex: 1,
-    marginBottom: 10,
+    marginBottom: 20,
     alignItems: "flex-start",
     flexDirection: "row",
   },
-  scrollContainer: {
+  contactInfoText: {
+    fontSize: 15,
+    paddingLeft: 10,
+    paddingTop: 5,
+    color: theme.colors.white,
+  },
+  swipeContainer: {
     alignItems: "center",
     marginTop: 30,
+  },
+  swipeText: {
+    fontSize: 15,
+    color: theme.colors.white,
+  },
+  settingButton: {
+    position: "absolute",
+    top: 40,
+    right: 20,
   },
 });

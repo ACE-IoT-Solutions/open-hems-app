@@ -5,7 +5,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { AppRouteName, AppRouteProps, DemandResponseStatus } from "../types";
 import { useHemsData, useHemsUpdateDerStatus } from "../hooks/api";
 import { ErrorLabel } from "../components/ErrorLabel";
-import { getApiEndpoint, getJwt } from "../utils/api";
+import { getApiEndpoint, getJwt, getStorageMacAddress } from "../utils/api";
 
 function ApiEndpointButton() {
   const [endpoint, setEndpoint] = useState<string>();
@@ -50,6 +50,28 @@ function JwtButton() {
       <View style={styles.cell}>
         <Text style={styles.cellTitle}>Authentication Token (JWT)</Text>
         <Text style={typography.label}>{jwt}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
+
+function MacAddressButton() {
+  const [macAddress, setMacAddress] = useState<string>();
+  const navigation = useNavigation<AppRouteProps>();
+
+  useFocusEffect(() => {
+    const getLocalMacAddress = async () => {
+      setMacAddress(await getStorageMacAddress());
+    };
+
+    getLocalMacAddress();
+  });
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("DebugMacAddress")}>
+      <View style={styles.cell}>
+        <Text style={styles.cellTitle}>Mac Address</Text>
+        <Text style={typography.label}>{macAddress}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -110,6 +132,7 @@ export function OptionsMenuScreen() {
     <View style={styles.container}>
       <ApiEndpointButton />
       <JwtButton />
+      <MacAddressButton />
       <DemandResponseToggle />
       <ScreenLink title="Debug" screenName="Debug" />
     </View>

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
-import { MainNavigator } from "./AppNavigator";
+import { AppNavigator } from "./AppNavigator";
 import { homeConfigData, thermostatData } from "../test/factories";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
@@ -22,7 +22,7 @@ describe("AppNavigator", () => {
     return render(
       <NavigationContainer>
         <MockSafeAreaProvider>
-          <MainNavigator />
+          <AppNavigator />
         </MockSafeAreaProvider>
       </NavigationContainer>
     );
