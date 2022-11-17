@@ -40,7 +40,7 @@ export function MacAddressScreen() {
     // console.log("macAddress", macAddress);
     const data = { authorized: true };
     const secret = sign(data, FIRST_SECRET + macAddress);
-    await setStorageMacAddress(macAddress);
+    setStorageMacAddress(macAddress);
     try {
       const url = await getApiEndpoint();
       const endpoint = "/hems/generate_new_jwt";

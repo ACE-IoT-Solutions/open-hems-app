@@ -38,12 +38,13 @@ export function WelcomeScreen() {
 
           <View>
             <Text style={styles.descriptionText}>
-              This app is designed to help you manage your new smart devices, just click on the tab below to access the
-              device you want to control.
+              The Connecting MHA app allows participants in the program to view, manage and override their smart home
+              devices. The app works only with the Connecting MHA program and users are given more details and
+              instructions for use upon enrollment.
             </Text>
             <Text style={styles.descriptionText}>
-              If you have any questions or concerns with your devices, or are having trouble during an
-              <Text style={{ fontWeight: "bold" }}> Energy Savings Event</Text>, contact us via phone or email:
+              If you have any questions, concerns, or are having trouble during an{" "}
+              <Text style={{ fontWeight: "bold" }}> Energy Savings Event</Text> contact us via phone or email.
             </Text>
           </View>
 

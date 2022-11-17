@@ -1,10 +1,9 @@
-import { Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY } from "../constants/api.constants";
 
 export type ApiPrefixName = "digitalOcean" | "githubPages" | "localhost" | "customUrl";
 export const githubPagesEndpoint = "https://carbonfive.github.io/open-hems-app";
-export const defaultEndpoint = Platform.OS === "ios" ? "http://127.0.0.1:5000" : "http://10.0.2.2:5000";
+export const defaultEndpoint = "https://open-hems.uc.r.appspot.com";
 
 export const apiNamespace = "/api/v1";
 
