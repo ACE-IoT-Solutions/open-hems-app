@@ -3,4 +3,7 @@ module.exports = {
     ios: {},
     android: {},
   },
+  extra: {
+    profile: process.env.profile || null,
+  },
 };

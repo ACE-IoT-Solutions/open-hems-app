@@ -44,6 +44,8 @@ export default function App() {
     Rubik_500Medium,
   });
 
+  // console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
+
   useEffect(() => {
     StatusBar.setBarStyle("dark-content");
 

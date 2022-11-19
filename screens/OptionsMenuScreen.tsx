@@ -128,13 +128,20 @@ function ScreenLink({ title, screenName }: ScreenLinkProps) {
 }
 
 export function OptionsMenuScreen() {
+  const isDevEnv = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
   return (
     <View style={styles.container}>
       <ApiEndpointButton />
       <JwtButton />
       <MacAddressButton />
-      <DemandResponseToggle />
-      <ScreenLink title="Debug" screenName="Debug" />
+      {isDevEnv ? (
+        <>
+          <DemandResponseToggle />
+          <ScreenLink title="Debug" screenName="Debug" />
+        </>
+      ) : (
+        <></>
+      )}
     </View>
   );
 }
