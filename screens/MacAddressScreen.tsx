@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, Modal, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, Modal, TouchableOpacity, Dimensions } from "react-native";
 import { theme } from "../theme";
 import { Button } from "../components/Button";
 import { setJwt, getApiEndpoint, setStorageMacAddress } from "../utils/api";
@@ -10,6 +10,9 @@ import { FIRST_SECRET } from "../constants/api.constants";
 import sign from "jwt-encode";
 import { TextInputMask } from "react-native-masked-text";
 import User from "../assets/svg/user.svg";
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 export function MacAddressScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -37,7 +40,6 @@ export function MacAddressScreen() {
   }
 
   async function verify() {
-    // console.log("macAddress", macAddress);
     const data = { authorized: true };
     const secret = sign(data, FIRST_SECRET + macAddress);
     setStorageMacAddress(macAddress);
@@ -59,11 +61,9 @@ export function MacAddressScreen() {
       if (response.status !== 200) {
         setJwt("INVALID_TOKEN");
         setIsModalVisible(true);
-        // console.log("Verify Failure");
       } else {
         const data = await response.json();
         setJwt(data["jwt"]);
-        // console.log("Verify Success");
         navigateToHome();
       }
     } catch (error) {
@@ -115,12 +115,11 @@ export function MacAddressScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "column",
-    maxHeight: 300,
-    maxWidth: 300,
-    marginTop: 200,
-    marginHorizontal: 50,
+    height: HEIGHT / 3,
+    width: WIDTH < 510 ? 300 : WIDTH / 3,
+    marginTop: HEIGHT / 4,
+    marginLeft: WIDTH < 510 ? (WIDTH - 300) / 2 : WIDTH / 3,
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
@@ -130,7 +129,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   textContainer: {
-    flex: 1,
     flexDirection: "column",
     maxHeight: 150,
     maxWidth: 210,
@@ -140,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 150,
     width: 210,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   labelText: {
     fontSize: 17,

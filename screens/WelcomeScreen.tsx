@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Dimensions } from "react-native";
 import Phone from "../assets/svg/phone.svg";
 import Welcome from "../assets/svg/welcome.svg";
 import Mail from "../assets/svg/mail.svg";
@@ -10,6 +10,9 @@ import { theme } from "../theme";
 import { NavigationActions } from "react-navigation";
 import { useNavigation } from "@react-navigation/native";
 import { MainNavigationProps } from "../types/navigation";
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 export function WelcomeScreen() {
   const navigation = useNavigation<MainNavigationProps>();
@@ -25,10 +28,10 @@ export function WelcomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <DismissableSwipeResponder>
-        <View style={styles.titleContainer}>
-          <Welcome width={200} height={200} />
+    <DismissableSwipeResponder>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.svgContainer}>
+          <Welcome width={WIDTH / 2} height={HEIGHT / 7} />
         </View>
 
         <View style={styles.textContainer}>
@@ -51,11 +54,11 @@ export function WelcomeScreen() {
           <View style={styles.contactContainer}>
             <Text style={styles.contactLabelContainer}>The Connecting MHA Team</Text>
             <View style={styles.contactRowContainer}>
-              <Phone width={30} height={30} fill="red" />
+              <Phone width={30} height={30} />
               <Text style={styles.contactInfoText}>(629) 256-5894</Text>
             </View>
             <View style={styles.contactRowContainer}>
-              <Mail width={30} height={30} fill="red" />
+              <Mail width={30} height={30} />
               <Text style={styles.contactInfoText}>info@connecting-mha.com</Text>
             </View>
           </View>
@@ -65,11 +68,11 @@ export function WelcomeScreen() {
             <Text style={[styles.swipeText, { paddingTop: 5 }]}>Swipe up to continue</Text>
           </View>
         </View>
-      </DismissableSwipeResponder>
+      </SafeAreaView>
       <TouchableOpacity onPress={navigateToOptions} style={styles.settingButton}>
         <User />
       </TouchableOpacity>
-    </SafeAreaView>
+    </DismissableSwipeResponder>
   );
 }
 
@@ -78,38 +81,34 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
   },
-  titleContainer: {
-    marginTop: -45,
-    marginBottom: -20,
+  svgContainer: {
+    flex: 1,
     alignItems: "center",
   },
   textContainer: {
-    flex: 7,
-    marginTop: -20,
-    paddingTop: 30,
-    paddingLeft: 40,
-    paddingRight: 40,
-    paddingBottom: 20,
+    flex: 5.5,
+    paddingHorizontal: 40,
+    paddingVertical: 25,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: "rgb(32, 140, 227)",
   },
+  divider: {
+    marginVertical: 20,
+    borderBottomColor: theme.colors.white,
+    borderBottomWidth: 1,
+  },
   descriptionText: {
     fontSize: 15,
     color: theme.colors.white,
-    paddingTop: 20,
+    paddingBottom: 25,
     lineHeight: 20,
-  },
-  divider: {
-    paddingTop: 20,
-    borderBottomColor: theme.colors.white,
-    borderBottomWidth: 1,
   },
   contactContainer: {
     flexDirection: "column",
     height: 180,
-    marginTop: 20,
-    padding: 25,
+    paddingHorizontal: 30,
+    paddingVertical: 25,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: theme.colors.white,
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
   },
   settingButton: {
     position: "absolute",
-    top: 40,
-    right: 20,
+    top: 50,
+    right: 10,
   },
 });
