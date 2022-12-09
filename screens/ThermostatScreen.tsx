@@ -184,7 +184,7 @@ export function ThermostatScreen() {
                         : setNewSetpoint({ setpoint: newSetpointData.setpoint - 0.56 })
                     }
                     onDrag={({ direction }) => {
-                      setNewSetpoint({ setpoint: newSetpointData.setpoint + 0.2 * (direction === "up" ? 1 : -1) });
+                      // setNewSetpoint({ setpoint: newSetpointData.setpoint + 0.2 * (direction === "up" ? 1 : -1) });
                     }}
                   />
                   <View style={styles.updateStatus}>

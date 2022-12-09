@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, Modal, TouchableOpacity, Dimensions } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, Modal, TouchableOpacity } from "react-native";
 import { theme } from "../theme";
 import { Button } from "../components/Button";
 import { setJwt, getApiEndpoint, setStorageMacAddress } from "../utils/api";
@@ -10,9 +10,6 @@ import { FIRST_SECRET } from "../constants/api.constants";
 import sign from "jwt-encode";
 import { TextInputMask } from "react-native-masked-text";
 import User from "../assets/svg/user.svg";
-
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
 
 export function MacAddressScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -90,39 +87,46 @@ export function MacAddressScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={navigateToOptions} style={styles.settingButton}>
-        <User />
-      </TouchableOpacity>
-      <View style={styles.textContainer}>
-        <View style={styles.labelTextContainer}>
-          <Text style={styles.labelText}>Find your 12-character mac address from your gateway and enter it below</Text>
+      <View style={styles.boxContainer}>
+        <TouchableOpacity onPress={navigateToOptions} style={styles.settingButton}>
+          <User />
+        </TouchableOpacity>
+        <View style={styles.textContainer}>
+          <View style={styles.labelTextContainer}>
+            <Text style={styles.labelText}>
+              Find your 12-character mac address from your gateway and enter it below
+            </Text>
+          </View>
+          <TextInputMask
+            style={styles.inputText}
+            value={macAddress}
+            type={"custom"}
+            placeholder="__:__:__:__:__:__"
+            options={{ mask: "SS:SS:SS:SS:SS:SS" }}
+            onChangeText={(newMacAddress) => setMacAddress(newMacAddress.replace(/[^a-zA-Z\d]+/g, "").toLowerCase())}
+            maxLength={17}
+          />
         </View>
-        <TextInputMask
-          style={styles.inputText}
-          value={macAddress}
-          type={"custom"}
-          placeholder="__:__:__:__:__:__"
-          options={{ mask: "SS:SS:SS:SS:SS:SS" }}
-          onChangeText={(newMacAddress) => setMacAddress(newMacAddress.replace(/[^a-zA-Z\d]+/g, "").toLowerCase())}
-          maxLength={17}
-        />
+        <Button label="Verify" style={styles.verifyButton} onPress={verify} />
+        <ErrorModal />
       </View>
-      <Button label="Verify" style={styles.verifyButton} onPress={verify} />
-      <ErrorModal />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: "column",
-    height: HEIGHT / 3,
-    width: WIDTH < 510 ? 300 : WIDTH / 3,
-    marginTop: HEIGHT / 4,
-    marginLeft: WIDTH < 510 ? (WIDTH - 300) / 2 : WIDTH / 3,
-    borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
+  },
+  boxContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 320,
+    width: 300,
+    borderRadius: 30,
     backgroundColor: theme.backdrop,
   },
   settingButton: {
@@ -160,11 +164,12 @@ const styles = StyleSheet.create({
   errorModal: {
     flex: 1,
     backgroundColor: "#000000aa",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   errorContainer: {
-    marginTop: 270,
-    marginHorizontal: 50,
-    padding: 40,
+    padding: 50,
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
     alignItems: "center",

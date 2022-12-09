@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Dimensions } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import Phone from "../assets/svg/phone.svg";
 import Welcome from "../assets/svg/welcome.svg";
 import Mail from "../assets/svg/mail.svg";
@@ -10,9 +10,6 @@ import { theme } from "../theme";
 import { NavigationActions } from "react-navigation";
 import { useNavigation } from "@react-navigation/native";
 import { MainNavigationProps } from "../types/navigation";
-
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
 
 export function WelcomeScreen() {
   const navigation = useNavigation<MainNavigationProps>();
@@ -31,7 +28,7 @@ export function WelcomeScreen() {
     <DismissableSwipeResponder>
       <SafeAreaView style={styles.container}>
         <View style={styles.svgContainer}>
-          <Welcome width={WIDTH / 2} height={HEIGHT / 7} />
+          <Welcome width={200} height={120} />
         </View>
 
         <View style={styles.textContainer}>
@@ -41,13 +38,12 @@ export function WelcomeScreen() {
 
           <View>
             <Text style={styles.descriptionText}>
-              The Connecting MHA app allows participants in the program to view, manage and override their smart home
-              devices. The app works only with the Connecting MHA program and users are given more details and
-              instructions for use upon enrollment.
+              This app is designed to help you manage your new smart devices, just click on the tab below to access the
+              device you want to control.
             </Text>
             <Text style={styles.descriptionText}>
-              If you have any questions, concerns, or are having trouble during an{" "}
-              <Text style={{ fontWeight: "bold" }}> Energy Savings Event</Text> contact us via phone or email.
+              If you have any questions or concerns with your devices, or are having trouble during an
+              <Text style={{ fontWeight: "bold" }}> Energy Savings Event</Text>, contact us via phone or email:
             </Text>
           </View>
 
