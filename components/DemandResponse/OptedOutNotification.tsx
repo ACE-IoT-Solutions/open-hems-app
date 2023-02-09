@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { theme } from "../../theme";
+import { theme, typography } from "../../theme";
 import AlertCircle from "../../assets/svg/alert-circle.svg";
 
 export function OptedOutNotification() {
   return (
     <TouchableOpacity testID="OptedOutNotification" style={styles.container}>
       <AlertCircle style={styles.icon} />
-      <Text style={styles.label}>You have opted out of demand response</Text>
+      <Text style={styles.label}>Standard operation has resumed</Text>
       <Text style={styles.cta}></Text>
     </TouchableOpacity>
   );

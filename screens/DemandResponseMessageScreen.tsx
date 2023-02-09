@@ -61,8 +61,8 @@ export function DemandResponseMessageScreen() {
             <View style={{ marginVertical: theme.padding }}>
               {showOptOutButton && (
                 <Button
-                  label="Opt Out of Power Event"
-                  accessibilityLabel="Opt Out of Power Event"
+                  label="Resume Normal Settings"
+                  accessibilityLabel="Resume Normal Settings"
                   onPress={() => setOptedOut(true)}
                   style={{ backgroundColor: theme.colors.red }}
                   activity={updateLoading}

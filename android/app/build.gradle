@@ -132,11 +132,11 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.ace_iot_solutions.open_hems_app'
+        applicationId 'com.aceiotsolutions.connecting_mha_app'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 36
-        versionName "0.0.25"
+        versionCode 7
+        versionName "0.0.7"
     }
     splits {
         abi {

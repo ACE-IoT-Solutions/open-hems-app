@@ -1,15 +1,15 @@
 import { Dimensions, StyleSheet } from "react-native";
 
 export const colors = {
-  darkBlue: "#170B47",
+  darkBlue: "#075EA3",
   darkBlue15pct: "rgba(23, 11, 71, 0.15)",
   darkBlue38pct: "rgba(23, 11, 71, 0.38)",
   greyBlue: "#696A86",
-  lightBlue: "#F5F5FE",
-  neutralBlue: "#E1E5F7",
+  lightBlue: "#F1F9FE",
+  neutralBlue: "#CDDFED",
   white: "#FFFFFF",
   errorRed: "#B00202",
-  orange: "#F15A29",
+  orange: "#FD8218",
   successGreen: "#2E9145",
   periwinkle: "#9E92CE",
 

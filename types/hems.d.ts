@@ -3,7 +3,7 @@ export type Watts = number;
 export type WattHours = number;
 
 export type DeviceId = string;
-export type DeviceType = "thermostat" | "ev_charger" | "water_heater" | "pv_system" | "home_battery";
+export type DeviceType = "welcome" | "thermostat" | "ev_charger" | "water_heater" | "pv_system" | "home_battery";
 export type DeviceService = "unlimited" | "normal" | "heat_pump" | "high_demand" | "energy_saver" | "vacation";
 export type DeviceStatus = "active" | "inactive";
 export type DemandResponseStatus = "normal" | "curtailed" | "heightened" | "opted_out";

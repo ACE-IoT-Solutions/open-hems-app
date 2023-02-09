@@ -5,7 +5,9 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { AppRouteName, AppRouteProps, DemandResponseStatus } from "../types";
 import { useHemsData, useHemsUpdateDerStatus } from "../hooks/api";
 import { ErrorLabel } from "../components/ErrorLabel";
-import { getApiEndpoint, getJwt } from "../utils/api";
+import { getApiEndpoint, getJwt, getStorageMacAddress } from "../utils/api";
+
+const isDevEnv = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
 function ApiEndpointButton() {
   const [endpoint, setEndpoint] = useState<string>();
@@ -24,12 +26,21 @@ function ApiEndpointButton() {
   });
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")}>
-      <View style={styles.cell}>
-        <Text style={styles.cellTitle}>HEMS API Endpoint</Text>
-        <Text style={typography.label}>{endpoint}</Text>
-      </View>
-    </TouchableOpacity>
+    <>
+      {isDevEnv ? (
+        <TouchableOpacity onPress={() => navigation.navigate("SettingsScreen")}>
+          <View style={styles.cell}>
+            <Text style={styles.cellTitle}>HEMS API Endpoint</Text>
+            <Text style={typography.label}>{endpoint}</Text>
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.cell}>
+          <Text style={styles.cellTitle}>HEMS API Endpoint</Text>
+          <Text style={typography.label}>{endpoint}</Text>
+        </View>
+      )}
+    </>
   );
 }
 
@@ -46,11 +57,52 @@ function JwtButton() {
   });
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("AuthTokenScreen")}>
+    <>
+      {isDevEnv ? (
+        <TouchableOpacity onPress={() => navigation.navigate("AuthTokenScreen")}>
+          <View style={styles.cell}>
+            <Text style={styles.cellTitle}>Authentication Token (JWT)</Text>
+            <Text style={typography.label}>{jwt}</Text>
+          </View>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.cell}>
+          <Text style={styles.cellTitle}>Authentication Token (JWT)</Text>
+          <Text style={typography.label}>{jwt}</Text>
+        </View>
+      )}
+    </>
+  );
+}
+
+function MacAddressButton() {
+  const [macAddress, setMacAddress] = useState<string>();
+  const navigation = useNavigation<AppRouteProps>();
+
+  useFocusEffect(() => {
+    const getLocalMacAddress = async () => {
+      setMacAddress(await getStorageMacAddress());
+    };
+
+    getLocalMacAddress();
+  });
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("DebugMacAddress")}>
       <View style={styles.cell}>
-        <Text style={styles.cellTitle}>Authentication Token (JWT)</Text>
-        <Text style={typography.label}>{jwt}</Text>
+        <Text style={styles.cellTitle}>Mac Address</Text>
+        <Text style={typography.label}>{macAddress}</Text>
       </View>
+    </TouchableOpacity>
+  );
+}
+
+function ViewWelcomeScreenButton() {
+  const navigation = useNavigation<AppRouteProps>();
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("DebugWelcome")}>
+      <ScreenLink title="View Welcome Screen" screenName="DebugWelcome" />
     </TouchableOpacity>
   );
 }
@@ -108,10 +160,18 @@ function ScreenLink({ title, screenName }: ScreenLinkProps) {
 export function OptionsMenuScreen() {
   return (
     <View style={styles.container}>
+      <ViewWelcomeScreenButton />
       <ApiEndpointButton />
       <JwtButton />
-      <DemandResponseToggle />
-      <ScreenLink title="Debug" screenName="Debug" />
+      <MacAddressButton />
+      {isDevEnv ? (
+        <>
+          <DemandResponseToggle />
+          <ScreenLink title="Debug" screenName="Debug" />
+        </>
+      ) : (
+        <></>
+      )}
     </View>
   );
 }

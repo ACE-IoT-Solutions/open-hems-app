@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY, DEFAULT_COJOURN_JWT_TOKEN } from "../constants/api.constants";
+import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY } from "../constants/api.constants";
 
 export type ApiPrefixName = "digitalOcean" | "githubPages" | "localhost" | "customUrl";
 export const githubPagesEndpoint = "https://carbonfive.github.io/open-hems-app";
-export const digitalOceanEndpoint = "https://open-hems.uc.r.appspot.com";
+export const defaultEndpoint = "https://open-hems.uc.r.appspot.com";
 
 export const apiNamespace = "/api/v1";
 
@@ -17,7 +17,7 @@ async function getApiPrefix(key: string | null): Promise<string | null> {
     case "customUrl":
       return await AsyncStorage.getItem(key);
     default:
-      return digitalOceanEndpoint;
+      return defaultEndpoint;
   }
 }
 
@@ -31,10 +31,17 @@ export async function getApiEndpoint(): Promise<string | null> {
 }
 
 export async function getJwt() {
-  const asyncJwt = await AsyncStorage.getItem(JWT_TOKEN_KEY);
-  return asyncJwt ?? DEFAULT_COJOURN_JWT_TOKEN;
+  return (await AsyncStorage.getItem(JWT_TOKEN_KEY)) ?? "INVALID_TOKEN";
 }
 
 export async function setJwt(jwt: string) {
   await AsyncStorage.setItem(JWT_TOKEN_KEY, jwt);
+}
+
+export async function getStorageMacAddress() {
+  return (await AsyncStorage.getItem("macAddress")) ?? "INVALID_MAC_ADDRESS";
+}
+
+export async function setStorageMacAddress(macAddress: string) {
+  await AsyncStorage.setItem("macAddress", macAddress);
 }
