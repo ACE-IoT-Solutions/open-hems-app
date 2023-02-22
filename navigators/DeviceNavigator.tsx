@@ -25,7 +25,7 @@ function DeviceScreenTab(device: DeviceData) {
   const deviceType = device.type as DeviceType;
 
   const deviceNavigationName: Record<DeviceType, DeviceScreenName> = {
-    welcome: "Welcome",
+    // welcome: "Welcome",
     thermostat: "Thermostat",
     ev_charger: "CarCharger",
     pv_system: "SolarPanel",
@@ -34,7 +34,7 @@ function DeviceScreenTab(device: DeviceData) {
   };
 
   const deviceScreenName = {
-    Welcome: WelcomeScreen,
+    // Welcome: WelcomeScreen,
     MacAddress: MacAddressScreen,
     Thermostat: ThermostatScreen,
     CarCharger: CarChargerScreen,

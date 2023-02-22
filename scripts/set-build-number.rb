@@ -48,7 +48,7 @@ puts "✨ Updated #{gradle_config_path}"
 
 # Rewrite app.json
 app_json_path = 'app.json'
-app_json = `cat #{app_json_path} | jq --arg versionName "#{version_name}" --arg versionCode "#{android_version_code}" '.expo.android.versionCode=$versionCode | .expo.version=$versionName'`
+app_json = `cat #{app_json_path} | jq --arg versionName "#{version_name}" --argjson versionCode "#{android_version_code}" '.expo.android.versionCode=$versionCode | .expo.version=$versionName'`
 File.write(app_json_path, app_json)
 puts "✨ Updated #{app_json_path}"
 

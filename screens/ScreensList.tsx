@@ -28,7 +28,7 @@ const ScreensListCell = ({ title }: ScreensListCellProps) => (
 
 const deviceNavigationName = (deviceType: DeviceType): keyof AppScreenParamsList => {
   const map: Record<DeviceType, keyof AppScreenParamsList> = {
-    welcome: "DebugWelcome",
+    // welcome: "WelcomeScreen",
     thermostat: "DebugThermostat",
     ev_charger: "DebugCarCharger",
     pv_system: "DebugSolarPanel",
@@ -63,11 +63,11 @@ export const ScreensList = () => {
       title: "Error Screen",
     },
     {
-      name: "DebugWelcome",
+      name: "Welcome",
       title: "Debug Welcome",
     },
     {
-      name: "DebugMacAddress",
+      name: "MacAddress",
       title: "Debug MacAddress",
     },
   ];

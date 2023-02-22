@@ -25,9 +25,9 @@ function MainNavigator() {
   };
 
   return (
-    <Navigator initialRouteName="DebugWelcome">
-      <Screen name="DebugWelcome" component={WelcomeScreen} options={{ headerShown: false }} />
-      <Screen name="DebugMacAddress" component={MacAddressScreen} options={{ animation: "none", headerShown: false }} />
+    <Navigator initialRouteName="WelcomeScreen">
+      <Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Screen name="MacAddress" component={MacAddressScreen} options={{ animation: "none", headerShown: false }} />
       <Screen name="AppNavigator" component={AppNavigator} options={{ animation: "none", headerShown: false }} />
 
       <Screen name="Options" component={OptionsMenuScreen} />

@@ -88,7 +88,7 @@ function MacAddressButton() {
   });
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("DebugMacAddress")}>
+    <TouchableOpacity onPress={() => navigation.navigate("MacAddress")}>
       <View style={styles.cell}>
         <Text style={styles.cellTitle}>Mac Address</Text>
         <Text style={typography.label}>{macAddress}</Text>
@@ -101,8 +101,11 @@ function ViewWelcomeScreenButton() {
   const navigation = useNavigation<AppRouteProps>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("DebugWelcome")}>
-      <ScreenLink title="View Welcome Screen" screenName="DebugWelcome" />
+    <TouchableOpacity onPress={() => navigation.navigate("WelcomeScreen", {screen: "WelcomeScreen", initial: false, Animation: false})}>
+      <View style={styles.cell}>
+        <Text style={styles.cellTitle}>WelcomeScreen</Text>
+      </View>
+      {/* <ScreenLink title="View Welcome Screen" screenName="WelcomeScreen" /> */}
     </TouchableOpacity>
   );
 }

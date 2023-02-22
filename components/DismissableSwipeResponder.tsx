@@ -39,8 +39,8 @@ export function DismissableSwipeResponder({ children }: { children: React.ReactN
 
     if (state === State.END) {
       if (translationY < -200) {
-        navigation.navigate("DebugMacAddress");
-        position.value = HEIGHT;
+        navigation.navigate("MacAddress");
+        position.value = 0;
       } else {
         position.value = withTiming(0, { duration: 100 });
       }

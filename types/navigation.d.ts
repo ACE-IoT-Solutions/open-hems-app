@@ -2,7 +2,7 @@ import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 export type DeviceParams = { deviceName: string; deviceId: DeviceId };
 export type DeviceScreenName =
-  | "Welcome"
+  // | "Welcome"
   | "MacAddress"
   | "Thermostat"
   | "SolarPanel"
@@ -11,7 +11,7 @@ export type DeviceScreenName =
   | "HomeBattery";
 
 export type DeviceParamList = {
-  Welcome: DeviceParams;
+  // Welcome: DeviceParams;
   Thermostat: DeviceParams;
   SolarPanel: DeviceParams;
   CarCharger: DeviceParams;
@@ -22,7 +22,7 @@ export type DeviceParamList = {
 export type DeviceNavigationProps = BottomTabNavigationProp<DeviceParamList>;
 export type MainNavigationProps = NativeStackNavigationProp<DeviceParamList>;
 
-export type WelcomeScreenRouteProps = RouteProp<DeviceParamList, "Welcome">;
+// export type WelcomeScreenRouteProps = RouteProp<DeviceParamList, "Welcome">;
 export type MacAddressScreenRouteProps = RouteProp<DeviceParamList, "MacAddress">;
 export type ThermostatScreenRouteProps = RouteProp<DeviceParamList, "Thermostat">;
 export type SolarPanelScreenRouteProps = RouteProp<DeviceParamList, "SolarPanel">;
@@ -30,7 +30,7 @@ export type CarChargerScreenRouteProps = RouteProp<DeviceParamList, "CarCharger"
 export type WaterHeaterScreenRouteProps = RouteProp<DeviceParamList, "WaterHeater">;
 export type HomeBatteryScreenRouteProps = RouteProp<DeviceParamList, "HomeBattery">;
 export type DeviceScreenRouteProps =
-  | WelcomeScreenRouteProps
+  // | WelcomeScreenRouteProps
   | MacAddressScreenRouteProps
   | ThermostatScreenRouteProps
   | SolarPanelScreenRouteProps
@@ -69,13 +69,13 @@ type AppScreenParamsList = {
   StyleGuide: undefined;
   ErrorScreen: undefined;
 
-  DebugWelcome: WelcomeScreenRouteProps;
-  DebugMacAddress: MacAddressScreenRouteProps;
-  DebugThermostat: ThermostatScreenRouteProps;
-  DebugCarCharger: CarChargerScreenRouteProps;
-  DebugSolarPanel: SolarPanelScreenRouteProps;
-  DebugWaterHeater: WaterHeaterScreenRouteProps;
-  DebugHomeBattery: HomeBatteryScreenRouteProps;
+  WelcomeScreen: WelcomeScreenRouteProps;
+  MacAddress: MacAddressScreenRouteProps;
+  Thermostat: ThermostatScreenRouteProps;
+  CarCharger: CarChargerScreenRouteProps;
+  SolarPanel: SolarPanelScreenRouteProps;
+  WaterHeater: WaterHeaterScreenRouteProps;
+  HomeBattery: HomeBatteryScreenRouteProps;
 };
 
 type AppRouteName = keyof AppScreenParamsList;
