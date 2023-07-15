@@ -13,7 +13,9 @@ import User from "../assets/svg/user.svg";
 
 export function MacAddressScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [macAddress, setMacAddress] = useState<string>("001122334455");
+  const [modalText, setModalText] = useState<string>("Invalid MAC Address");
+  // const [macAddress, setMacAddress] = useState<string>("001122334455");
+  const [macAddress, setMacAddress] = useState<string>("8034283b1d67");
   const navigation = useNavigation<MainNavigationProps>();
 
   function navigateToHome() {
@@ -40,6 +42,7 @@ export function MacAddressScreen() {
     const data = { authorized: true };
     const secret = sign(data, FIRST_SECRET + macAddress);
     setStorageMacAddress(macAddress);
+    setModalText("Invalid MAC Address");
     try {
       const url = await getApiEndpoint();
       const endpoint = "/hems/generate_new_jwt";
@@ -64,6 +67,8 @@ export function MacAddressScreen() {
         navigateToHome();
       }
     } catch (error) {
+      setModalText("Error connecting to server, check WiFi Connection");
+      setIsModalVisible(true);
       console.log("Error: ", error);
     }
   }
@@ -77,7 +82,7 @@ export function MacAddressScreen() {
       <Modal transparent={true} visible={isModalVisible}>
         <View style={styles.errorModal}>
           <View style={styles.errorContainer}>
-            <Text style={styles.errorMessage}>Invalid Mac Address</Text>
+            <Text style={styles.errorMessage} >{modalText}</Text>
             <Button style={styles.errorButton} label="Try Again" onPress={toggleModal} />
           </View>
         </View>

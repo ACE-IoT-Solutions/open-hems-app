@@ -95,6 +95,7 @@ export function ThermostatScreen() {
   }, [data, updateError]);
 
   function setNewSetpoint(setpointData: Partial<ThermostatUpdateSetPointPayload>) {
+    console.log("setNewSetpoint", setpointData);
     if (!newSetpointData) {
       return;
     }
@@ -184,7 +185,7 @@ export function ThermostatScreen() {
                         : setNewSetpoint({ setpoint: newSetpointData.setpoint - 0.56 })
                     }
                     onDrag={({ direction }) => {
-                      // setNewSetpoint({ setpoint: newSetpointData.setpoint + 0.2 * (direction === "up" ? 1 : -1) });
+                      setNewSetpoint({ setpoint: newSetpointData.setpoint + 0.2 * (direction === "up" ? 1 : -1) });
                     }}
                   />
                   <View style={styles.updateStatus}>
@@ -231,6 +232,7 @@ export function ThermostatScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: "wrap",
     backgroundColor: theme.background,
     paddingBottom: theme.padding,
   },

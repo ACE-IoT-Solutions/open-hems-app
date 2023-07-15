@@ -2,7 +2,7 @@
   "expo": {
     "name": "Connecting MHA",
     "slug": "connecting-mha-app",
-    "version": "0.0.17",
+    "version": "0.0.19",
     "orientation": "portrait",
     "owner": "ace-iot",
     "icon": "./assets/icon.png",
@@ -28,7 +28,7 @@
         "foregroundImage": "./assets/icon.adaptive.foreground.png",
         "backgroundImage": "./assets/icon.adaptive.background.png"
       },
-      "versionCode": 17,
+      "versionCode": 19,
       "package": "com.aceiotsolutions.connecting_mha_app"
     },
     "web": {
@@ -38,6 +38,7 @@
       "eas": {
         "projectId": "b4debb26-532a-47f3-8a70-aaac03231111"
       }
-    }
+    },
+    "plugins": ["expo-localization"]
   }
 }

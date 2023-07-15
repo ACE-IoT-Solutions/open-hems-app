@@ -10,6 +10,7 @@ import { theme } from "../theme";
 import { NavigationActions } from "react-navigation";
 import { useNavigation } from "@react-navigation/native";
 import { MainNavigationProps } from "../types/navigation";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export function WelcomeScreen() {
   const navigation = useNavigation<MainNavigationProps>();
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "flex-start",
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   contactInfoText: {
     fontSize: 15,

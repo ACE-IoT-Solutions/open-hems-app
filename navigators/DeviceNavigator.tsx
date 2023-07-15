@@ -129,6 +129,7 @@ function DeviceTabBar({
       const tabStyle: ViewStyle = {
         flex: 1,
         flexGrow: label.length,
+        flexWrap: "wrap",
         borderTopWidth: 5,
         borderTopColor: isFocused ? theme.primary : theme.backdrop,
         paddingVertical: 10,

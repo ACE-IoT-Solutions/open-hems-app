@@ -19,6 +19,7 @@ export function StyleGuideScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexwrap: 'wrap',
     backgroundColor: theme.background,
     padding: 10,
   },

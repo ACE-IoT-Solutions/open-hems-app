@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Platform, StatusBar } from "react-native";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { AppNavigator } from "./navigators/AppNavigator";
@@ -15,6 +15,8 @@ import { MacAddressScreen } from "./screens/MacAddressScreen";
 import { OptionsMenuScreen } from "./screens/OptionsMenuScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { AuthTokenScreen } from "./screens/AuthTokenScreen";
+
+SplashScreen.preventAutoHideAsync();
 
 const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
 
@@ -37,6 +39,7 @@ function MainNavigator() {
   );
 }
 
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Rubik_300Light,
@@ -55,8 +58,9 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return ;
   } else {
+    SplashScreen.hideAsync();
     return (
       <ErrorBoundary>
         <SafeAreaProvider>
