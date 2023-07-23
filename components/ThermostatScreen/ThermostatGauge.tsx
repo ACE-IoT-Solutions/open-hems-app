@@ -101,7 +101,7 @@ export const ThermostatGauge = ({
   };
 
   return (
-    <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
+    // <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
       <View style={styles.container}>
         <View style={styles.wrapper}>
           {label && <Text style={styles.label}>{label}</Text>}
@@ -134,7 +134,7 @@ export const ThermostatGauge = ({
           </View>
         </View>
       </View>
-    </PanGestureHandler>
+    // </PanGestureHandler>
   );
 };
 
@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
   controls: {
     position: "absolute",
     flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "space-around",
     marginTop: 110,
     width: "100%",

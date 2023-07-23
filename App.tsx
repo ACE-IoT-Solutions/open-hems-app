@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Platform, StatusBar } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import { getStorageMacAddress, getWelcomeDismissed } from "./utils/api";
 
 import { AppNavigator } from "./navigators/AppNavigator";
 import { useFonts, Rubik_300Light, Rubik_400Regular, Rubik_500Medium } from "@expo-google-fonts/rubik";
@@ -15,19 +16,21 @@ import { MacAddressScreen } from "./screens/MacAddressScreen";
 import { OptionsMenuScreen } from "./screens/OptionsMenuScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { AuthTokenScreen } from "./screens/AuthTokenScreen";
+import { useInitialRouteName, useWelcomeDismissed } from "./hooks/useAppStateData";
 
 SplashScreen.preventAutoHideAsync();
 
 const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
 
-function MainNavigator() {
+function MainNavigator({"initialRouteName": initialRouteName}: {initialRouteName: keyof AppScreenParamsList}) {
   const headerTintColor = theme.text;
   const headerTitleStyle = {
     fontFamily: theme.fonts.title,
   };
 
+
   return (
-    <Navigator initialRouteName="WelcomeScreen">
+    <Navigator initialRouteName={initialRouteName}>
       <Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
       <Screen name="MacAddress" component={MacAddressScreen} options={{ animation: "none", headerShown: false }} />
       <Screen name="AppNavigator" component={AppNavigator} options={{ animation: "none", headerShown: false }} />
@@ -41,13 +44,16 @@ function MainNavigator() {
 
 
 export default function App() {
+  // const { welcomeDismissedState, error, loading, getWelcomeDismissedState, setWelcomeDismissedEffect } = useWelcomeDismissed();
+  // const initialRouteName = welcomeDismissedState ? "AppNavigator" : "WelcomeScreen" as keyof AppScreenParamsList;
+  const {initialRouteNameState, error, loading, getInitialRouteName} = useInitialRouteName();
   const [fontsLoaded] = useFonts({
     Rubik_300Light,
     Rubik_400Regular,
     Rubik_500Medium,
   });
 
-  // console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
+  console.log("app.tsx", initialRouteNameState);
 
   useEffect(() => {
     StatusBar.setBarStyle("dark-content");
@@ -55,9 +61,11 @@ export default function App() {
     if (Platform.OS === "android") {
       StatusBar.setBackgroundColor(theme.background);
     }
+    // getInitialRouteName();
+
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || loading) {
     return ;
   } else {
     SplashScreen.hideAsync();
@@ -65,7 +73,7 @@ export default function App() {
       <ErrorBoundary>
         <SafeAreaProvider>
           <NavigationContainer>
-            <MainNavigator />
+            <MainNavigator initialRouteName={initialRouteNameState}/>
           </NavigationContainer>
         </SafeAreaProvider>
       </ErrorBoundary>

@@ -10,12 +10,18 @@ import { FIRST_SECRET } from "../constants/api.constants";
 import sign from "jwt-encode";
 import { TextInputMask } from "react-native-masked-text";
 import User from "../assets/svg/user.svg";
+import { get } from "lodash";
+
+// export const DEFAULT_MAC_ADDRESS = "8034283b1d67";
+export const DEFAULT_MAC_ADDRESS = "001122334455";
+  // const [macAddress, setMacAddress] = useState<string>("001122334455");
+
+
 
 export function MacAddressScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalText, setModalText] = useState<string>("Invalid MAC Address");
-  // const [macAddress, setMacAddress] = useState<string>("001122334455");
-  const [macAddress, setMacAddress] = useState<string>("8034283b1d67");
+  const [macAddress, setMacAddress] = useState<string>(DEFAULT_MAC_ADDRESS);
   const navigation = useNavigation<MainNavigationProps>();
 
   function navigateToHome() {
@@ -75,6 +81,10 @@ export function MacAddressScreen() {
 
   function toggleModal() {
     setIsModalVisible(!isModalVisible);
+  }
+
+  function componentWillMount() {
+    setMacAddress
   }
 
   function ErrorModal() {

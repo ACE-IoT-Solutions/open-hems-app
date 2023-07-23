@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { theme, typography } from "../../theme";
 

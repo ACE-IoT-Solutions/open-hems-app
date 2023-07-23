@@ -4,9 +4,10 @@
 # Bump Android version code by 1: eg 27 -> 28
 # Bump semver version patch level by 1: eg 0.1.8 -> 0.1.9
 
-version_number = `cat android/app/build.gradle | grep -E "versionCode ([0-9]+)"`
-  .sub(/versionCode\s+/, '')
-  .to_i
+# version_number = `cat android/app/build.gradle | grep -E "versionCode ([0-9]+)"`
+#   .sub(/versionCode\s+/, '')
+#   .to_i
+version_number = `cat app.json | jq '.expo.android.versionCode'`.gsub('"','').strip.to_i
 version_name = `cat package.json | jq '.version'`.gsub('"','').strip
 
 new_version_number = version_number + 1
