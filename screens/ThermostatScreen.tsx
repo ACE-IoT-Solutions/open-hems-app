@@ -169,7 +169,7 @@ export function ThermostatScreen() {
                 </View>
                 <View style={styles.thermostatGauge}>
                   <ThermostatGauge
-                    label={data.mode === "auto" ? "Energy Efficient" : " "}
+                    label="Indoor"
                     disabled={isLoading}
                     pendingActivity={pendingActivity}
                     setPoint={newSetpointData.setpoint}

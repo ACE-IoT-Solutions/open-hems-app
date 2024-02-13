@@ -105,11 +105,11 @@ export const ThermostatGauge = ({
       <View style={styles.container}>
         <View style={styles.wrapper}>
           {label && <Text style={styles.label}>{label}</Text>}
+          <Text style={[styles.indoorTemp, disabled && styles.disabled]}>
+            {getLocalTemperature(interiorTemp)}&deg;
+          </Text>
           <Text style={[styles.setpoint, pendingActivity && styles.activeSetpoint, disabled && styles.disabled]}>
             {getLocalTemperature(setPoint)}&deg;
-          </Text>
-          <Text style={[styles.indoorTemp, disabled && styles.disabled]}>
-            {getLocalTemperature(interiorTemp)}&deg; Indoor
           </Text>
           <View style={styles.controls}>
             <ThermostatGaugeButton
@@ -156,10 +156,8 @@ const styles = StyleSheet.create({
     ...typography.headline3,
   },
   setpoint: {
-    ...typography.headline1,
+    ...typography.label,
     color: theme.primary,
-    textAlign: "center",
-    width: "100%",
   },
   activeSetpoint: {
     shadowOpacity: 2,
@@ -177,8 +175,10 @@ const styles = StyleSheet.create({
     color: theme.disabledText,
   },
   indoorTemp: {
-    ...typography.label,
+    ...typography.headline1,
     color: theme.primary,
+    textAlign: "center",
+    width: "100%",
   },
   controls: {
     position: "absolute",
