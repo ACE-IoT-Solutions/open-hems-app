@@ -171,6 +171,8 @@ export function ThermostatScreen() {
                   <ThermostatGauge
                     label="Indoor"
                     disabled={isLoading}
+                    drStatus={data.dr_status}
+                    mode={data.mode}
                     pendingActivity={pendingActivity}
                     setPoint={newSetpointData.setpoint}
                     interiorTemp={data.interior_temperature}
