@@ -159,6 +159,7 @@ export const ThermostatGauge = ({
             onPress={onPressCool}
           />
           <View style={styles.spacer} />
+          <View style={styles.spacer} />
           <ThermostatGaugeButton
             label="Warm"
             icon={<ThermostatUpIcon />}
@@ -194,10 +195,13 @@ const styles = StyleSheet.create({
   },
   label: {
     ...typography.headline3Bold,
+    marginTop: 50,
+    flex: 1,
     color: theme.text,
   },
   indoorTemp: {
     ...typography.headline1,
+    flex: 1,
     color: theme.primary,
   },
   activeSetpoint: {
@@ -229,12 +233,11 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   controls: {
-    position: "absolute",
+    flex: 1,
+    marginTop: 5,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
-    marginTop: 140,
-    width: "100%",
+    justifyContent: "space-between",
   },
   spacer: {
     width: 12,
