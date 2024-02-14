@@ -1,4 +1,17 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="20" cy="20" r="19" stroke="#075EA3" stroke-width="2" />
     <path d="M13 20L20 27L27 20M20 13V26V13Z" stroke="#075EA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg> -->
+
+<svg  width="28" height="28" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2048 2048">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil1 {fill:#075EA3;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+  <polygon class="fil1" points="1407.99,1024.07 1049.77,1644.53 1024,1689.17 998.23,1644.53 640.006,1024.07 640.006,1023.96 281.784,403.497 255.999,358.835 307.555,358.835 1024,358.835 1740.45,358.835 1792,358.835 1766.22,403.497 1407.99,1023.96 "/>
 </svg>
+<!-- #2E3192 -->
