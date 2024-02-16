@@ -14,7 +14,7 @@ export const ErrorLabel = ({
   testID = "ErrorLabel",
 }: ErrorLabelProps) => {
   return (
-    <Text testID={testID} style={{ ...style, ...typography.errorText }}>
+    <Text testID={testID} style={{ ...style, ...typography.errorText }} maxFontSizeMultiplier={2}>
       {message}
     </Text>
   );

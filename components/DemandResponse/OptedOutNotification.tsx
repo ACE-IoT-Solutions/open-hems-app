@@ -7,7 +7,9 @@ export function OptedOutNotification() {
   return (
     <TouchableOpacity testID="OptedOutNotification" style={styles.container}>
       <AlertCircle style={styles.icon} />
-      <Text style={styles.label}>Standard operation has resumed</Text>
+      <Text style={styles.label} maxFontSizeMultiplier={1.6}>
+        Standard operation has resumed
+      </Text>
       <Text style={styles.cta}></Text>
     </TouchableOpacity>
   );
@@ -31,6 +33,8 @@ const styles = StyleSheet.create({
     color: theme.primary,
     fontFamily: theme.fonts.title,
     paddingHorizontal: theme.padding,
+    textAlign: "center",
+    maxWidth: "60%",
   },
   cta: {
     marginLeft: "auto",

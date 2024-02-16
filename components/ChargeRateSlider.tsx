@@ -84,7 +84,12 @@ export function ChargeRateSlider({
     <View style={[styles.container, { width: dimensions.width - theme.padding * 2 }]}>
       <View style={styles.rates}>
         {rates.map((rate, i) => (
-          <Text testID="ChargeRateSlider-rate-label" key={i} style={[styles.label, rateLabelStyle(rate)]}>
+          <Text
+            testID="ChargeRateSlider-rate-label"
+            key={i}
+            style={[styles.label, rateLabelStyle(rate)]}
+            allowFontScaling={false}
+          >
             {rate}
           </Text>
         ))}

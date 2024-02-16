@@ -16,17 +16,23 @@ export function EnergyGenerated({ energyGenerated, energySentToGrid }: EnergyGen
   return (
     <View testID="EnergyGenerated" style={styles.monthlySummary}>
       <View style={styles.alignLeft}>
-        <Text style={typography.headline2}>{formattedEnergyGenerated}</Text>
-        <Text style={typography.label}>This Month</Text>
+        <Text style={typography.headline2} allowFontScaling={false}>
+          {formattedEnergyGenerated}
+        </Text>
+        <Text style={typography.label} maxFontSizeMultiplier={1.5}>
+          This Month
+        </Text>
       </View>
 
       <View style={styles.alignRight}>
         <View>
-          <Text style={typography.headline2}>
+          <Text style={typography.headline2} allowFontScaling={false}>
             {formattedEnergySentToGrid} ({formattedPercentageEnergySentToGrid})
           </Text>
         </View>
-        <Text style={typography.label}>Sent to Grid</Text>
+        <Text style={typography.label} maxFontSizeMultiplier={1.5}>
+          Sent to Grid
+        </Text>
       </View>
     </View>
   );

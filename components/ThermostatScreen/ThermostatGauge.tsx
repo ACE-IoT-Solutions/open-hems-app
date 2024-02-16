@@ -124,31 +124,46 @@ export const ThermostatGauge = ({
     // <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        {label && <Text style={styles.label}>{label}</Text>}
-        <Text style={[styles.indoorTemp, pendingActivity && styles.activeSetpoint, disabled && styles.disabled]}>
+        {label && (
+          <Text style={styles.label} maxFontSizeMultiplier={1.3}>
+            {label}
+          </Text>
+        )}
+        <Text
+          style={[styles.indoorTemp, pendingActivity && styles.activeSetpoint, disabled && styles.disabled]}
+          allowFontScaling={false}
+        >
           {getLocalTemperature(interiorTemp)}&deg;
         </Text>
         {mode === "auto" ? (
           <View style={{ flexDirection: "row" }}>
             <View style={styles.container}>
-              <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Cool</Text>
-              <Text style={[styles.setpoint, disabled && styles.disabled]}>
+              <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+                Cool
+              </Text>
+              <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
                 {calculateOffset(setPoint, "cool", drStatus)}&deg;
               </Text>
             </View>
             <View style={styles.spacer} />
             <View style={styles.spacer} />
             <View style={styles.container}>
-              <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Heat</Text>
-              <Text style={[styles.setpoint, disabled && styles.disabled]}>
+              <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+                Heat
+              </Text>
+              <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
                 {calculateOffset(setPoint, "heat", drStatus)}&deg;
               </Text>
             </View>
           </View>
         ) : (
           <>
-            <Text style={[styles.setpointLabel, disabled && styles.disabled]}>{mode}</Text>
-            <Text style={[styles.setpoint, disabled && styles.disabled]}>{getLocalTemperature(setPoint)}&deg;</Text>
+            <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+              {mode}
+            </Text>
+            <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
+              {getLocalTemperature(setPoint)}&deg;
+            </Text>
           </>
         )}
         <View style={styles.controls}>

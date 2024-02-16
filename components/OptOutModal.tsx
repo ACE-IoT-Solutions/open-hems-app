@@ -14,8 +14,12 @@ export function OptOutModal({ message, visible, onPressGoBack, onPressConfirm }:
     <Modal testID="OptOutModal" animationType="fade" transparent={true} visible={visible}>
       <View style={styles.modalContainer}>
         <View style={styles.optOutModal}>
-          <Text style={styles.optOutTitle}>Are you sure?</Text>
-          <Text style={styles.optOutMessage}>{message}</Text>
+          <Text style={styles.optOutTitle} maxFontSizeMultiplier={2}>
+            Are you sure?
+          </Text>
+          <Text style={styles.optOutMessage} maxFontSizeMultiplier={2}>
+            {message}
+          </Text>
           <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
             <Button label="Go Back" onPress={onPressGoBack} style={styles.optOutButton} />
             <Button
