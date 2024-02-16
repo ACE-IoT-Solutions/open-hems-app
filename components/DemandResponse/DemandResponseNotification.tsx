@@ -9,8 +9,12 @@ export function DemandResponseNotification({ onPress }: DemandResponseNotificati
   return (
     <TouchableOpacity testID="DemandResponseNotification" style={styles.container} onPress={onPress}>
       <Help style={styles.icon} />
-      <Text style={styles.label}>Adjusted for Power Efficiency</Text>
-      <Text style={styles.cta}>View</Text>
+      <Text style={styles.label} maxFontSizeMultiplier={1.6}>
+        Adjusted for Power Efficiency
+      </Text>
+      <Text style={styles.cta} maxFontSizeMultiplier={1.6}>
+        View
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -32,6 +36,8 @@ const styles = StyleSheet.create({
   label: {
     color: theme.colors.white,
     fontFamily: theme.fonts.title,
+    textAlign: "center",
+    maxWidth: "70%",
   },
   cta: {
     fontFamily: theme.fonts.title,

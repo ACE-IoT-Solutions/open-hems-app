@@ -157,8 +157,12 @@ export const ThermostatGauge = ({
           </View>
         ) : (
           <>
-            <Text style={[styles.setpointLabel, disabled && styles.disabled]}>{mode}</Text>
-            <Text style={[styles.setpoint, disabled && styles.disabled]}>{getLocalTemperature(setPoint)}&deg;</Text>
+            <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+              {mode}
+            </Text>
+            <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
+              {getLocalTemperature(setPoint)}&deg;
+            </Text>
           </>
         )}
         <View style={styles.controls}>

@@ -22,7 +22,11 @@ export function Button({ accessibilityLabel, activity, disabled, label, onPress,
       accessibilityRole="button"
       disabled={disabled}
     >
-      {!activity && <Text style={[typography.headline3Bold, styles.label]}>{label}</Text>}
+      {!activity && (
+        <Text style={[typography.headline3Bold, styles.label]} allowFontScaling={false}>
+          {label}
+        </Text>
+      )}
       {activity && <ActivityIndicator />}
     </TouchableOpacity>
   );

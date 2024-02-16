@@ -12,7 +12,9 @@ type DeviceHeaderProps = {
 export function DeviceHeader({ deviceName, onPressAccount }: DeviceHeaderProps) {
   return (
     <View testID="DeviceHeader" style={styles.headerContainer}>
-      <Text style={styles.deviceNameLabel}>{deviceName}</Text>
+      <Text style={styles.deviceNameLabel} maxFontSizeMultiplier={3}>
+        {deviceName}
+      </Text>
       <TouchableOpacity onPress={onPressAccount}>
         <User />
       </TouchableOpacity>

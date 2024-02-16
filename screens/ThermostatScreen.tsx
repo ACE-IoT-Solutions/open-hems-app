@@ -163,7 +163,7 @@ export function ThermostatScreen() {
               >
                 <View style={styles.outdoorTemp}>
                   <WeatherIcon testID="exteriorWeatherSvg" weather={data.exterior_weather} />
-                  <Text testID="ThermostatScreen-outdoor-temp" style={styles.outdoorTempText}>
+                  <Text testID="ThermostatScreen-outdoor-temp" style={styles.outdoorTempText} maxFontSizeMultiplier={3}>
                     {getLocalTemperature(data.exterior_temperature)}&deg; Outside
                   </Text>
                 </View>

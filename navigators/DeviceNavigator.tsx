@@ -153,7 +153,9 @@ function DeviceTabBar({
           key={route.key}
           onLayout={onLayout}
         >
-          <Text style={typography.label}>{label}</Text>
+          <Text style={typography.label} allowFontScaling={false}>
+            {label}
+          </Text>
         </TouchableOpacity>
       );
     });

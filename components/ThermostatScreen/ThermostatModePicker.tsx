@@ -50,7 +50,7 @@ export const ThermostatModePicker = ({ options, selectedMode, onChange }: Thermo
       >
         <View style={styles.mode}>
           {selectedMode !== "off" && <View style={styles.inlineIcon}>{selectedOption?.icon}</View>}
-          <Text testID="ThermostatModePicker-selected-label" style={styles.label}>
+          <Text testID="ThermostatModePicker-selected-label" style={styles.label} maxFontSizeMultiplier={2}>
             {capitalize(selectedMode)}
           </Text>
         </View>
