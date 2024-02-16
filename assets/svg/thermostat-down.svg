@@ -3,7 +3,7 @@
     <path d="M13 20L20 27L27 20M20 13V26V13Z" stroke="#075EA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 </svg> -->
 
-<svg  width="28" height="28" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2048 2048">
+<svg  width="24" height="24" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2048 2048">
  <defs>
   <style type="text/css">
    <![CDATA[

@@ -125,24 +125,34 @@ export const ThermostatGauge = ({
     <View style={styles.container}>
       <View style={styles.wrapper}>
         {label && <Text style={styles.label}>{label}</Text>}
-        <Text style={[styles.indoorTemp, pendingActivity && styles.activeSetpoint, disabled && styles.disabled]}>
-          {getLocalTemperature(interiorTemp)}&deg;
-        </Text>
+        <View style={styles.tempContainer}>
+          <Text
+            allowFontScaling={false}
+            style={[styles.indoorTemp, pendingActivity && styles.activeSetpoint, disabled && styles.disabled]}
+          >
+            {getLocalTemperature(interiorTemp)}
+          </Text>
+          <Text style={styles.degree}>&deg;</Text>
+        </View>
         {mode === "auto" ? (
-          <View style={{ flexDirection: "row" }}>
-            <View style={styles.container}>
+          <View style={{ flexDirection: "row", display: "flex" }}>
+            <View style={styles.setpointContainer}>
               <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Cool</Text>
-              <Text style={[styles.setpoint, disabled && styles.disabled]}>
-                {calculateOffset(setPoint, "cool", drStatus)}&deg;
-              </Text>
+              <View style={styles.tempContainer}>
+                <Text style={[styles.setpoint, disabled && styles.disabled]}>
+                  {calculateOffset(setPoint, "cool", drStatus)}
+                </Text>
+                <Text style={styles.setpointdegree}>&deg;</Text>
+              </View>
             </View>
-            <View style={styles.spacer} />
-            <View style={styles.spacer} />
-            <View style={styles.container}>
+            <View style={styles.setpointContainer}>
               <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Heat</Text>
-              <Text style={[styles.setpoint, disabled && styles.disabled]}>
-                {calculateOffset(setPoint, "heat", drStatus)}&deg;
-              </Text>
+              <View style={styles.tempContainer}>
+                <Text style={[styles.setpoint, disabled && styles.disabled]}>
+                  {calculateOffset(setPoint, "heat", drStatus)}
+                </Text>
+                <Text style={styles.setpointdegree}>&deg;</Text>
+              </View>
             </View>
           </View>
         ) : (
@@ -152,20 +162,22 @@ export const ThermostatGauge = ({
           </>
         )}
         <View style={styles.controls}>
-          <ThermostatGaugeButton
-            label="Cool"
-            icon={<ThermostatDownIcon />}
-            disabled={disabled || setPoint <= minTemp}
-            onPress={onPressCool}
-          />
-          <View style={styles.spacer} />
-          <View style={styles.spacer} />
-          <ThermostatGaugeButton
-            label="Warm"
-            icon={<ThermostatUpIcon />}
-            disabled={disabled || setPoint >= maxTemp}
-            onPress={onPressWarm}
-          />
+          <View style={styles.gauge}>
+            <ThermostatGaugeButton
+              label="Cool"
+              icon={<ThermostatDownIcon />}
+              disabled={disabled || setPoint <= minTemp}
+              onPress={onPressCool}
+            />
+          </View>
+          <View style={styles.gauge}>
+            <ThermostatGaugeButton
+              label="Warm"
+              icon={<ThermostatUpIcon />}
+              disabled={disabled || setPoint >= maxTemp}
+              onPress={onPressWarm}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.dialContainer}>
@@ -181,7 +193,6 @@ export const ThermostatGauge = ({
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "center",
@@ -199,10 +210,31 @@ const styles = StyleSheet.create({
     flex: 1,
     color: theme.text,
   },
-  indoorTemp: {
-    ...typography.headline1,
+  tempContainer: {
     flex: 1,
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  indoorTemp: {
+    ...typography.headline1Bold,
     color: theme.primary,
+  },
+  degree: {
+    marginTop: 10,
+    fontSize: 18,
+    marginLeft: -2,
+    color: theme.primary,
+  },
+  setpointdegree: {
+    marginTop: 1,
+    fontSize: 12,
+    marginLeft: -1,
+    color: theme.primary,
+  },
+  setpointContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   activeSetpoint: {
     shadowOpacity: 2,
@@ -228,9 +260,9 @@ const styles = StyleSheet.create({
   setpoint: {
     ...typography.label,
     fontSize: 18,
+    alignSelf: "center",
+    justifyContent: "center",
     color: theme.primary,
-    textAlign: "center",
-    width: "100%",
   },
   controls: {
     flex: 1,
@@ -239,6 +271,10 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
   },
+  gauge: {
+    flex: 1,
+  },
+
   spacer: {
     width: 12,
   },
