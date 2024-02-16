@@ -25,7 +25,6 @@ const fonts = {
   rubik300: "Rubik_300Light",
   rubik400: "Rubik_400Regular",
   rubik500: "Rubik_500Medium",
-  rubik600: "Rubik_600SemiBold",
 };
 
 export const theme = {

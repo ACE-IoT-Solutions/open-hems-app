@@ -259,6 +259,7 @@ const styles = StyleSheet.create({
   },
   setpoint: {
     ...typography.label,
+    fontFamily: theme.fonts.title,
     fontSize: 18,
     alignSelf: "center",
     justifyContent: "center",
