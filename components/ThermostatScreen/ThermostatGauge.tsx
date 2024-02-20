@@ -124,7 +124,11 @@ export const ThermostatGauge = ({
     // <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        {label && <Text style={styles.label}>{label}</Text>}
+        {label && (
+          <Text style={styles.label} maxFontSizeMultiplier={1.3}>
+            {label}
+          </Text>
+        )}
         <View style={styles.tempContainer}>
           <Text
             allowFontScaling={false}
@@ -132,26 +136,36 @@ export const ThermostatGauge = ({
           >
             {getLocalTemperature(interiorTemp)}
           </Text>
-          <Text style={styles.degree}>&deg;</Text>
+          <Text style={styles.degree} allowFontScaling={false}>
+            &deg;
+          </Text>
         </View>
         {mode === "auto" ? (
           <View style={{ flexDirection: "row", display: "flex" }}>
             <View style={styles.setpointContainer}>
-              <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Cool</Text>
+              <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+                Cool
+              </Text>
               <View style={styles.tempContainer}>
-                <Text style={[styles.setpoint, disabled && styles.disabled]}>
+                <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
                   {calculateOffset(setPoint, "cool", drStatus)}
                 </Text>
-                <Text style={styles.setpointdegree}>&deg;</Text>
+                <Text style={styles.setpointdegree} allowFontScaling={false}>
+                  &deg;
+                </Text>
               </View>
             </View>
             <View style={styles.setpointContainer}>
-              <Text style={[styles.setpointLabel, disabled && styles.disabled]}>Heat</Text>
+              <Text style={[styles.setpointLabel, disabled && styles.disabled]} allowFontScaling={false}>
+                Heat
+              </Text>
               <View style={styles.tempContainer}>
-                <Text style={[styles.setpoint, disabled && styles.disabled]}>
+                <Text style={[styles.setpoint, disabled && styles.disabled]} allowFontScaling={false}>
                   {calculateOffset(setPoint, "heat", drStatus)}
                 </Text>
-                <Text style={styles.setpointdegree}>&deg;</Text>
+                <Text style={styles.setpointdegree} allowFontScaling={false}>
+                  &deg;
+                </Text>
               </View>
             </View>
           </View>

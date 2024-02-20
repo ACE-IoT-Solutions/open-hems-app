@@ -3,8 +3,8 @@ import { USER_API_PREFIX_KEY, JWT_TOKEN_KEY } from "../constants/api.constants";
 
 export type ApiPrefixName = "digitalOcean" | "githubPages" | "localhost" | "customUrl";
 export const githubPagesEndpoint = "https://carbonfive.github.io/open-hems-app";
-// export const defaultEndpoint = "https://open-hems.uc.r.appspot.com";
-export const defaultEndpoint = "http://192.168.100.99:5000";
+export const defaultEndpoint = "https://open-hems.uc.r.appspot.com";
+// export const defaultEndpoint = "http://192.168.100.99:5000";
 // export const defaultEndpoint = "http://100.121.132.110:5000";
 
 export const apiNamespace = "/api/v1";
