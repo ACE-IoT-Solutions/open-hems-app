@@ -7,6 +7,7 @@ import {
   PanGestureHandlerStateChangeEvent,
   PanGestureHandlerEventPayload,
   GestureEvent,
+  GestureHandlerRootView,
 } from "react-native-gesture-handler";
 import Animated, { withTiming, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import { DeviceNavigationProps, DeviceScreenRouteProps } from "../types";
@@ -78,10 +79,12 @@ export function NavigationSwipeResponder({ children }: { children: React.ReactNo
   }
 
   return (
-    <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
-      <View style={{ flex: 1, backgroundColor: theme.background }}>
-        <Animated.View style={[{ flex: 1 }, animatedStyle]}>{children}</Animated.View>
-      </View>
-    </PanGestureHandler>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PanGestureHandler onGestureEvent={onGesture} onHandlerStateChange={onGestureStateChange}>
+        <View style={{ flex: 1, backgroundColor: theme.background }}>
+          <Animated.View style={[{ flex: 1 }, animatedStyle]}>{children}</Animated.View>
+        </View>
+      </PanGestureHandler>
+    </GestureHandlerRootView>
   );
 }
