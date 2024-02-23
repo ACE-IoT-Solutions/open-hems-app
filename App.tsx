@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { getStorageMacAddress, getWelcomeDismissed } from "./utils/api";
 
 import { AppNavigator } from "./navigators/AppNavigator";
-import { useFonts, Rubik_300Light, Rubik_400Regular, Rubik_500Medium } from "@expo-google-fonts/rubik";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { theme } from "./theme";
@@ -17,17 +16,23 @@ import { OptionsMenuScreen } from "./screens/OptionsMenuScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { AuthTokenScreen } from "./screens/AuthTokenScreen";
 import { useInitialRouteName, useWelcomeDismissed } from "./hooks/useAppStateData";
+import {
+  Arimo_400Regular,
+  Arimo_500Medium,
+  Arimo_600SemiBold,
+  Arimo_700Bold,
+  useFonts,
+} from "@expo-google-fonts/arimo";
 
 SplashScreen.preventAutoHideAsync();
 
 const { Navigator, Screen } = createNativeStackNavigator<AppScreenParamsList>();
 
-function MainNavigator({"initialRouteName": initialRouteName}: {initialRouteName: keyof AppScreenParamsList}) {
+function MainNavigator({ initialRouteName: initialRouteName }: { initialRouteName: keyof AppScreenParamsList }) {
   const headerTintColor = theme.text;
   const headerTitleStyle = {
     fontFamily: theme.fonts.title,
   };
-
 
   return (
     <Navigator initialRouteName={initialRouteName}>
@@ -42,15 +47,15 @@ function MainNavigator({"initialRouteName": initialRouteName}: {initialRouteName
   );
 }
 
-
 export default function App() {
   // const { welcomeDismissedState, error, loading, getWelcomeDismissedState, setWelcomeDismissedEffect } = useWelcomeDismissed();
   // const initialRouteName = welcomeDismissedState ? "AppNavigator" : "WelcomeScreen" as keyof AppScreenParamsList;
-  const {initialRouteNameState, error, loading, getInitialRouteName} = useInitialRouteName();
+  const { initialRouteNameState, error, loading, getInitialRouteName } = useInitialRouteName();
   const [fontsLoaded] = useFonts({
-    Rubik_300Light,
-    Rubik_400Regular,
-    Rubik_500Medium,
+    Arimo_400Regular,
+    Arimo_500Medium,
+    Arimo_600SemiBold,
+    Arimo_700Bold,
   });
 
   console.log("app.tsx", initialRouteNameState);
@@ -62,18 +67,17 @@ export default function App() {
       StatusBar.setBackgroundColor(theme.background);
     }
     // getInitialRouteName();
-
   });
 
   if (!fontsLoaded || loading) {
-    return ;
+    return;
   } else {
     SplashScreen.hideAsync();
     return (
       <ErrorBoundary>
         <SafeAreaProvider>
           <NavigationContainer>
-            <MainNavigator initialRouteName={initialRouteNameState}/>
+            <MainNavigator initialRouteName={initialRouteNameState} />
           </NavigationContainer>
         </SafeAreaProvider>
       </ErrorBoundary>

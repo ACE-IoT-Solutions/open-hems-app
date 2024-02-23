@@ -22,9 +22,10 @@ export const colors = {
 };
 
 const fonts = {
-  rubik300: "Rubik_300Light",
-  rubik400: "Rubik_400Regular",
-  rubik500: "Rubik_500Medium",
+  arimo400: "Arimo_400Regular",
+  arimo500: "Arimo_500Medium",
+  arimo600: "Arimo_600SemiBold",
+  arimo700: "Arimo_700Bold",
 };
 
 export const theme = {
@@ -43,8 +44,8 @@ export const theme = {
   },
 
   fonts: {
-    regular: fonts.rubik400,
-    title: fonts.rubik500,
+    regular: fonts.arimo400,
+    title: fonts.arimo500,
   },
 
   padding: 15,
@@ -53,60 +54,60 @@ export const theme = {
 
 export const typography = StyleSheet.create({
   headline1: {
-    fontFamily: fonts.rubik300,
+    fontFamily: fonts.arimo400,
     fontSize: 60,
   },
 
   headline1Bold: {
-    fontFamily: fonts.rubik400,
-    fontSize: 60,
+    fontFamily: fonts.arimo700,
+    fontSize: 85,
   },
 
   headline2: {
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 18,
   },
 
   headline3: {
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 16,
     color: colors.darkBlue,
   },
 
   headline3Bold: {
-    fontFamily: fonts.rubik500,
+    fontFamily: fonts.arimo500,
     fontSize: 16,
   },
 
   label: {
     color: theme.text,
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 12,
     letterSpacing: 0.08,
   },
 
   slider: {
     color: theme.text,
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 14,
     letterSpacing: 0.08,
   },
 
   text: {
     color: theme.text,
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 16,
   },
 
   errorText: {
     color: colors.errorRed,
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 16,
   },
 
   smallErrorText: {
     color: colors.errorRed,
-    fontFamily: fonts.rubik400,
+    fontFamily: fonts.arimo400,
     fontSize: 12,
   },
 });

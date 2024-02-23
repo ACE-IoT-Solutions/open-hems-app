@@ -45,8 +45,4 @@ const styles = StyleSheet.create({
   disabled: {
     opacity: 0.629,
   },
-  label: {
-    color: theme.primary,
-    textAlign: "center",
-  },
 });
