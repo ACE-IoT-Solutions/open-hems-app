@@ -3,15 +3,34 @@
     <path d="M13 20L20 27L27 20M20 13V26V13Z" stroke="#075EA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 </svg> -->
 
-<svg  width="24" height="24" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2048 2048">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .fil0 {fill:none}
-    .fil1 {fill:#075EA3;fill-rule:nonzero}
-   ]]>
-  </style>
- </defs>
-  <polygon class="fil1" points="1407.99,1024.07 1049.77,1644.53 1024,1689.17 998.23,1644.53 640.006,1024.07 640.006,1023.96 281.784,403.497 255.999,358.835 307.555,358.835 1024,358.835 1740.45,358.835 1792,358.835 1766.22,403.497 1407.99,1023.96 "/>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"  height = "40" width="40" viewBox="0 0 29.44 29.44">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #447dae;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #4988b5;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-1" cx="14.72" cy="14.72" r="10.89"/>
+      <circle class="cls-3" cx="14.72" cy="14.72" r="13.72"/>
+      <path class="cls-2" d="M10.5,11.2h8.45c.5,0,.81.55.56.99l-4.22,7.23c-.25.43-.87.43-1.12,0l-4.22-7.23c-.26-.44.06-.99.56-.99Z"/>
+    </g>
+  </g>
 </svg>
-<!-- #2E3192 -->
