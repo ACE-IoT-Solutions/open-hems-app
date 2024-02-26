@@ -21,9 +21,7 @@ export const ThermostatGaugeButton = ({ icon, label, disabled = false, onPress }
       accessibilityLabel={label}
     >
       <View style={disabled && styles.disabled}>
-        <View style={styles.container}>
-          <View style={styles.icon}>{icon}</View>
-        </View>
+        <View style={styles.container}>{icon}</View>
       </View>
     </TouchableOpacity>
   );
@@ -31,16 +29,8 @@ export const ThermostatGaugeButton = ({ icon, label, disabled = false, onPress }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
+    flex: 1,
     alignItems: "center",
-  },
-  icon: {
-    backgroundColor: theme.backdrop,
-    padding: 8,
-    marginTop: 2,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: theme.backdrop,
   },
   disabled: {
     opacity: 0.629,

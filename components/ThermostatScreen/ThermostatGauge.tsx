@@ -180,22 +180,19 @@ export const ThermostatGauge = ({
           </>
         )}
         <View style={styles.controls}>
-          <View style={styles.gauge}>
-            <ThermostatGaugeButton
-              label="Cool"
-              icon={<ThermostatDownIcon />}
-              disabled={disabled || setPoint <= minTemp}
-              onPress={onPressCool}
-            />
-          </View>
-          <View style={styles.gauge}>
-            <ThermostatGaugeButton
-              label="Warm"
-              icon={<ThermostatUpIcon />}
-              disabled={disabled || setPoint >= maxTemp}
-              onPress={onPressWarm}
-            />
-          </View>
+          <ThermostatGaugeButton
+            label="Cool"
+            icon={<ThermostatDownIcon />}
+            disabled={disabled || setPoint <= minTemp}
+            onPress={onPressCool}
+          />
+
+          <ThermostatGaugeButton
+            label="Warm"
+            icon={<ThermostatUpIcon />}
+            disabled={disabled || setPoint >= maxTemp}
+            onPress={onPressWarm}
+          />
         </View>
       </View>
       <View style={styles.dialContainer}>
@@ -294,8 +291,8 @@ const styles = StyleSheet.create({
   controls: {
     flex: 1,
     marginTop: 5,
+    marginLeft: 2.5,
     flexDirection: "row",
-    flexWrap: "wrap",
     justifyContent: "space-between",
   },
   gauge: {
