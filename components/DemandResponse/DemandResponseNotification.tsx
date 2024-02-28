@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     minHeight: 45,
     paddingVertical: theme.padding / 2,
-    backgroundColor: theme.primary,
+    backgroundColor: theme.colors.darkBlue,
     borderRadius: 22,
   },
   icon: {

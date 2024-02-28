@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     minHeight: 45,
     paddingVertical: theme.padding / 2,
-    backgroundColor: theme.colors.periwinkle,
+    backgroundColor: theme.colors.navyBlue,
     borderRadius: 22,
   },
   icon: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     marginRight: "auto",
   },
   label: {
-    color: theme.primary,
+    color: theme.colors.white,
     fontFamily: theme.fonts.title,
     paddingHorizontal: theme.padding,
     textAlign: "center",

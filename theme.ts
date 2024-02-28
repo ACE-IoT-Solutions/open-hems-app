@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet } from "react-native";
 
 export const colors = {
   darkBlue: "#075EA3",
+  navyBlue: "#003A70",
   darkBlue15pct: "rgba(23, 11, 71, 0.15)",
   darkBlue38pct: "rgba(23, 11, 71, 0.38)",
   greyBlue: "#696A86",
@@ -32,8 +33,8 @@ export const theme = {
   background: colors.lightBlue,
   backgroundMask: colors.darkBlue38pct,
   backdrop: colors.neutralBlue,
-  primary: colors.darkBlue,
-  text: colors.darkBlue,
+  primary: colors.navyBlue,
+  text: colors.navyBlue,
   disabledText: colors.greyBlue,
 
   colors: {
@@ -41,6 +42,8 @@ export const theme = {
     orange: colors.orange,
     white: colors.white,
     periwinkle: colors.periwinkle,
+    darkBlue: colors.darkBlue,
+    navyBlue: colors.navyBlue,
   },
 
   fonts: {
@@ -71,7 +74,7 @@ export const typography = StyleSheet.create({
   headline3: {
     fontFamily: fonts.arimo400,
     fontSize: 16,
-    color: colors.darkBlue,
+    color: colors.navyBlue,
   },
 
   headline3Bold: {
