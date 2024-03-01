@@ -43,8 +43,8 @@ export function WelcomeScreen() {
               device you want to control.
             </Text>
             <Text style={styles.descriptionText}>
-              If you have any questions or concerns with your devices, or are having trouble during an
-              <Text style={{ fontWeight: "bold" }}> Energy Savings Event</Text>, contact us via phone or email:
+              If you have any questions or concerns with your devices, or are having trouble during a
+              <Text style={{ fontWeight: "bold" }}> Smart Energy Event</Text>, contact us via phone or email:
             </Text>
           </View>
 

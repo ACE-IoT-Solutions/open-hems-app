@@ -101,9 +101,13 @@ function ViewWelcomeScreenButton() {
   const navigation = useNavigation<AppRouteProps>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("WelcomeScreen", {screen: "WelcomeScreen", initial: false, Animation: false})}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("WelcomeScreen", { screen: "WelcomeScreen", initial: false, Animation: false })
+      }
+    >
       <View style={styles.cell}>
-        <Text style={styles.cellTitle}>WelcomeScreen</Text>
+        <Text style={styles.cellTitle}>Welcome Screen</Text>
       </View>
       {/* <ScreenLink title="View Welcome Screen" screenName="WelcomeScreen" /> */}
     </TouchableOpacity>
