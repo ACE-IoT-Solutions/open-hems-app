@@ -1,0 +1,6 @@
+module Pods_ConnectingMHA {
+  umbrella header "Pods-ConnectingMHA-umbrella.h"
+
+  export *
+  module * { export * }
+}

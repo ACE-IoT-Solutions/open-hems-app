@@ -7,6 +7,18 @@ A React Native app demonstrating HEMS API interactions.
 yarn
 ```
 
+#### Build App Locally
+Android:
+```
+yarn run android
+eas build --platform android --local
+```
+iOS:
+```
+yarn run ios
+eas build --platform ios --local
+```
+
 #### Run App Locally
 ```
 yarn start
