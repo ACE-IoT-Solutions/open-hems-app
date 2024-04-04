@@ -29,6 +29,7 @@
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "^50.0.7",
+    "expo-build-properties": "~0.11.1",
     "expo-app-loading": "~1.2.1",
     "expo-font": "~11.10.3",
     "expo-localization": "~14.8.3",
